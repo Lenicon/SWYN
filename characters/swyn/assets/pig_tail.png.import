@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6xmllcttr6f7"
-path="res://.godot/imported/pig_fr.png-da7c688c5dbbb17bfe63abce4126c8c7.ctex"
+uid="uid://cukme2a33f6jp"
+path="res://.godot/imported/pig_tail.png-bdcf3524849c64fb2a094020a675eaf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/swyn/assets/pig_fr.png"
-dest_files=["res://.godot/imported/pig_fr.png-da7c688c5dbbb17bfe63abce4126c8c7.ctex"]
+source_file="res://characters/swyn/assets/pig_tail.png"
+dest_files=["res://.godot/imported/pig_tail.png-bdcf3524849c64fb2a094020a675eaf5.ctex"]
 
 [params]
 
