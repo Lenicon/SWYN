@@ -12,9 +12,8 @@ func physics_update(delta:float) -> void:
 	owner.handle_horizontal_movement(delta)
 	handle_coyote_time()
 
-	#if Input.is_action_just_pressed("jump"):
-		#finish("AirMovement", {"input":"jump"})
-	
+	if Input.is_action_just_pressed("jump"):
+		finish("AirMovement", {"input":"jump"})
 	
 	if owner.is_on_floor():
 		if abs(owner.x_input) > 0: owner.play_animation("walk")
