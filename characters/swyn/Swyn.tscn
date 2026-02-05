@@ -1,18 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccbibkipccr2c"]
+[gd_scene load_steps=26 format=3 uid="uid://ccbibkipccr2c"]
 
-[ext_resource type="Texture2D" uid="uid://cb1s4mq4bsn7e" path="res://characters/swyn/assets/pig_head.png" id="1_0ve2y"]
+[ext_resource type="Texture2D" uid="uid://cb1s4mq4bsn7e" path="res://characters/swyn/assets/pig/pig_head.png" id="1_0ve2y"]
 [ext_resource type="Script" uid="uid://behw1676u27ua" path="res://characters/swyn/swyn.gd" id="1_v7y6b"]
-[ext_resource type="Texture2D" uid="uid://c4oyelwgk3sh1" path="res://characters/swyn/assets/pig_body.png" id="2_v7y6b"]
-[ext_resource type="Texture2D" uid="uid://cukme2a33f6jp" path="res://characters/swyn/assets/pig_tail.png" id="3_bbhkv"]
-[ext_resource type="Texture2D" uid="uid://b6xmllcttr6f7" path="res://characters/swyn/assets/pig_fr.png" id="4_8plpc"]
-[ext_resource type="Texture2D" uid="uid://qr82invuop3k" path="res://characters/swyn/assets/pig_fl.png" id="5_776dl"]
-[ext_resource type="Texture2D" uid="uid://dpodi8ya6858l" path="res://characters/swyn/assets/pig_br.png" id="6_i8d2l"]
-[ext_resource type="Texture2D" uid="uid://crwxcmfg6yid1" path="res://characters/swyn/assets/pig_bl.png" id="7_mfrjw"]
+[ext_resource type="Texture2D" uid="uid://duwg71lfmp70" path="res://characters/swyn/assets/syn/syn_cannon.png" id="2_c0su7"]
+[ext_resource type="Texture2D" uid="uid://c4oyelwgk3sh1" path="res://characters/swyn/assets/pig/pig_body.png" id="2_v7y6b"]
+[ext_resource type="Texture2D" uid="uid://cukme2a33f6jp" path="res://characters/swyn/assets/pig/pig_tail.png" id="3_bbhkv"]
+[ext_resource type="Texture2D" uid="uid://b6xmllcttr6f7" path="res://characters/swyn/assets/pig/pig_fr.png" id="4_8plpc"]
+[ext_resource type="Texture2D" uid="uid://qr82invuop3k" path="res://characters/swyn/assets/pig/pig_fl.png" id="5_776dl"]
+[ext_resource type="Texture2D" uid="uid://dpodi8ya6858l" path="res://characters/swyn/assets/pig/pig_br.png" id="6_i8d2l"]
+[ext_resource type="Texture2D" uid="uid://crwxcmfg6yid1" path="res://characters/swyn/assets/pig/pig_bl.png" id="7_mfrjw"]
+[ext_resource type="Texture2D" uid="uid://bd5rbeh5600c8" path="res://characters/swyn/assets/syn/syn.png" id="8_8c2ja"]
 [ext_resource type="Script" uid="uid://ctj81lss8e4uo" path="res://components/StateMachine.gd" id="9_bbhkv"]
 [ext_resource type="Script" uid="uid://rubutraaywst" path="res://characters/swyn/states/FloorMovement.gd" id="10_j5q6g"]
 [ext_resource type="Script" uid="uid://dr1ai2vuiw2av" path="res://characters/swyn/states/AirMovement.gd" id="11_ycv6i"]
 [ext_resource type="Script" uid="uid://bb55u35w0f64b" path="res://components/GravityComponent.gd" id="12_52mnq"]
 [ext_resource type="Script" uid="uid://tuld0msecjtr" path="res://components/HealthComponent.gd" id="13_ycv6i"]
+[ext_resource type="Script" uid="uid://cgwbil03opbxe" path="res://characters/swyn/Shoot.gd" id="14_8c2ja"]
+[ext_resource type="Script" uid="uid://b5lhxxqongdx8" path="res://components/HurtBoxComponent.gd" id="17_mcea4"]
+[ext_resource type="AudioStream" uid="uid://c0ev1auqapfvx" path="res://assets/audio/pig/truffle_fucker.mp3" id="18_2rpd1"]
 
 [sub_resource type="Animation" id="Animation_v7y6b"]
 length = 0.001
@@ -718,6 +723,22 @@ tracks/25/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ycv6i"]
+resource_name = "jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygons:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
 [sub_resource type="Animation" id="Animation_0ve2y"]
 resource_name = "walk"
 length = 0.4
@@ -1108,22 +1129,6 @@ tracks/31/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_ycv6i"]
-resource_name = "jump"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Polygons:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.2831855]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v7y6b"]
 _data = {
 &"RESET": SubResource("Animation_v7y6b"),
@@ -1136,12 +1141,17 @@ _data = {
 radius = 56.0
 height = 180.0
 
-[node name="Swyn" type="CharacterBody2D" node_paths=PackedStringArray("body_shape", "animation_player", "state_machine", "gravity_component")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rpd1"]
+radius = 51.0
+height = 180.0
+
+[node name="Swyn" type="CharacterBody2D" node_paths=PackedStringArray("body_shape", "animation_player", "state_machine", "gravity_component") groups=["Pig"]]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_v7y6b")
 body_shape = NodePath("Polygons")
 acceleration = 20.0
-speed = 500.0
-jump_velocity = 700.0
+jump_height = 80.0
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
 gravity_component = NodePath("GravityComponent")
@@ -1152,15 +1162,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_v7y6b")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-14, 19)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_a0acf")
-metadata/_edit_lock_ = true
-
 [node name="Polygons" type="Node2D" parent="."]
 rotation = 6.2831855
 metadata/_edit_lock_ = true
+
+[node name="SynCannon" type="Sprite2D" parent="Polygons"]
+position = Vector2(17.000004, -48.000008)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_c0su7")
+
+[node name="spot" type="Marker2D" parent="Polygons/SynCannon"]
+position = Vector2(90.66667, 0)
 
 [node name="PigBL" type="Polygon2D" parent="Polygons"]
 position = Vector2(10, 25)
@@ -1210,6 +1222,11 @@ uv = PackedVector2Array(39, 20.6, 30, 17, 30, 20.2, 12.1, 40, 10.5, 40, 0, 76.2,
 polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)]
 bones = ["Body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/Tail", PackedFloat32Array(0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0.5, 0.5), "Body/BackRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/BackRight/BackRight2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/BackRight/BackRight2/BackRight3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontRight/FrontRight2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontRight/FrontRight2/FrontRight3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontLeft/FrontLeft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/FrontLeft/FrontLeft2/FrontLeft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/BackLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/BackLeft/BackLeft2", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/BackLeft/BackLeft2/BackLeft3", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 metadata/_edit_lock_ = true
+
+[node name="Syn" type="Sprite2D" parent="Polygons"]
+position = Vector2(-23, -12.99999)
+scale = Vector2(1.5, 1.625)
+texture = ExtResource("8_8c2ja")
 
 [node name="PigBR" type="Polygon2D" parent="Polygons"]
 position = Vector2(10, 25)
@@ -1299,7 +1316,7 @@ rest = Transform2D(1, 0, 0, 1, -23, 2.7210884)
 
 [node name="Head" type="Bone2D" parent="Polygons/Skeleton2D/Body"]
 position = Vector2(70, 0.8503401)
-rotation = -0.052359883
+rotation = -0.052359894
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(1, 0, 0, 1, 70, 0.8503401)
 auto_calculate_length_and_angle = false
@@ -1310,17 +1327,24 @@ bone_angle = 3.9999986
 script = ExtResource("9_bbhkv")
 metadata/_custom_type_script = "uid://ctj81lss8e4uo"
 
-[node name="FloorMovement" type="Node" parent="StateMachine" node_paths=PackedStringArray("coyote_timer")]
+[node name="FloorMovement" type="Node" parent="StateMachine" node_paths=PackedStringArray("coyote_timer", "shoot_state")]
 script = ExtResource("10_j5q6g")
-coyote_timer = NodePath("../../Timer")
+coyote_timer = NodePath("../../CoyoteTimer")
+shoot_state = NodePath("../Shoot")
 
-[node name="AirMovement" type="Node" parent="StateMachine"]
+[node name="AirMovement" type="Node" parent="StateMachine" node_paths=PackedStringArray("shoot_state")]
 script = ExtResource("11_ycv6i")
+shoot_state = NodePath("../Shoot")
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("spot", "cooldown")]
+script = ExtResource("14_8c2ja")
+spot = NodePath("../../Polygons/SynCannon/spot")
+cooldown = NodePath("../../ShootCooldown")
 
 [node name="GravityComponent" type="Node" parent="."]
 script = ExtResource("12_52mnq")
-gravity = 1500.0
-fall_gravity = 1000.0
+gravity = 3000.0
+fall_gravity = 4000.0
 metadata/_custom_type_script = "uid://bb55u35w0f64b"
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
@@ -1329,5 +1353,35 @@ initial_health = 100
 character = NodePath("..")
 metadata/_custom_type_script = "uid://tuld0msecjtr"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 19)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_a0acf")
+metadata/_edit_lock_ = true
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("17_mcea4")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://b5lhxxqongdx8"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-9, 10)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_2rpd1")
+debug_color = Color(0.99999994, 0, 0.10932062, 0.41960785)
+
+[node name="Oink" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 0)
+
+[node name="TruffleNoise" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(104, 0)
+stream = ExtResource("18_2rpd1")
+
+[connection signal="timeout" from="ShootCooldown" to="StateMachine/Shoot" method="_on_shoot_cooldown_timeout"]

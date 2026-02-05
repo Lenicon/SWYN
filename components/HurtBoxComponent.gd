@@ -19,7 +19,7 @@ extends Area2D
 signal received_damage(damage:int)
 
 @export var health:HealthComponent
-@export var active_hurtbox:bool = true
+@export var hurtbox_active:bool = true
 
 func _ready() -> void:
 	if (owner.get("health_component") != null and health==null): health = owner.health
@@ -30,7 +30,7 @@ func _on_area_entered(hitbox:Area2D) -> void:
 		damage(hitbox)
 
 func damage(hitbox:Area2D) -> void:
-	if active_hurtbox == true:
+	if hurtbox_active == true:
 		#print("%s : %s" % [owner.name, health.health])
 		received_damage.emit(hitbox.damage)
 		health.decrease(hitbox.damage)

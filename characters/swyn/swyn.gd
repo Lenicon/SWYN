@@ -1,9 +1,21 @@
 extends CharacterComponent
 
 @export var body_shape: Node2D
+@onready var truffle_noise:AudioStreamPlayer2D
 
-func _ready() -> void:
-	pass
+func _ready():
+	update_syn()
+
+## SYN ###############################################
+@onready var syn:Sprite2D = $Polygons/Syn
+@onready var syn_cannon:Sprite2D = $Polygons/SynCannon
+@export var syn_speed:float = 760 
+
+func update_syn():
+	syn.visible = Data.save["syn"]["active"]
+	syn_cannon.visible = (Data.save["syn"]["weapon"] != Data.WEAPON.NONE and syn.visible)
+	speed = syn_speed if Data.save["syn"]["active"] else initial_speed
+	
 
 
 ## Horizontal Movement #################################################
@@ -12,7 +24,8 @@ var direction:int = 1
 var x_input:float
 @export var acceleration:float = 5.0
 @export var friction:float = 15.0
-@export var speed:float = 160
+@export var initial_speed: float = 500
+@export var speed:float = 500
 
 func handle_horizontal_movement(delta:float) -> void:
 	body_shape.scale.x = direction
@@ -25,18 +38,35 @@ func handle_horizontal_movement(delta:float) -> void:
 
 
 ## Advance Jumping ################################################
-@export var jump_velocity: float = 400
-@export var max_jumps:int = 2
+@export var jump_height : float = 400.0 # Pixels
+@export var time_to_peak : float = 0.1 # Seconds
+
+@onready var jump_velocity : float = -((2.0 * jump_height) / time_to_peak)
+
+#@export var jump_velocity: float = 400
+var max_jumps:int = Data.save["jumps"]
 @export var min_jumps:int = 1
 var jump_buffer_active:bool = false
 var jumps:int = max_jumps
+@onready var oink:AudioStreamPlayer2D = $Oink
+
+@onready var oink_files = [
+	preload("res://assets/audio/pig/oink1.mp3"),
+	preload("res://assets/audio/pig/oink2.mp3"),
+	preload("res://assets/audio/pig/oink3.mp3"),
+	preload("res://assets/audio/pig/oink4.mp3"),
+	preload("res://assets/audio/pig/oink5.mp3"),
+]
 
 func jump() -> void:
-	if jumps > 0:
-		velocity.y = -jump_velocity
+	if jumps > 0 and can_move:
+		var r = randi_range(0, 4)
+		oink.stream = oink_files[r]
+		if oink.stream: oink.play()
+		velocity.y = jump_velocity
 
 func handle_variable_jump_height(jump_released:bool) -> void:
 	if jump_released and not gravity_component.is_falling and jumps > 0:
-		velocity.y = -(jump_velocity)/4
+		velocity.y = jump_velocity/4
 	if jump_released:
 		jumps -= 1

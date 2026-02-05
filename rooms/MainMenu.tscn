@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=4 uid="uid://do6w7n32srbju"]
+
+[ext_resource type="Script" uid="uid://dd1dufaojsi8b" path="res://rooms/main_menu.gd" id="1_d4ivp"]
+[ext_resource type="Shader" uid="uid://db5rdkn4ql71p" path="res://assets/shaders/DynamicFogShader.gdshader" id="1_quf3u"]
+[ext_resource type="Texture2D" uid="uid://dfwe4bprfws7e" path="res://assets/tilesets/grass.png" id="2_k17sd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k17sd"]
+shader = ExtResource("1_quf3u")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/octave_count = 5
+shader_parameter/amp_start = 0.5
+shader_parameter/amp_coeff = 0.4499999899416
+shader_parameter/freq_coeff = 4.96999988891056
+shader_parameter/zoom = 3.0
+shader_parameter/speed = 0.20000000298024
+shader_parameter/alpha = 1.0
+shader_parameter/base_color = Color(0.21176471, 0.77254903, 1, 1)
+shader_parameter/p_color = Color(0.9529986, 3.3884047e-05, 0.67668617, 1)
+shader_parameter/q_color = Color(0.9999997, 0.70502895, 0.99789685, 1)
+shader_parameter/f_color = Color(1, 1, 1, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4ivp"]
+resource_name = "Grass"
+texture = ExtResource("2_k17sd")
+texture_region_size = Vector2i(100, 100)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 50, -25, 50, -25, -25, 50, -25)
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/next_alternative_id = 4
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -25, 50, -25, 50, 50, -50, 50)
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -25, 25, -25, 25, 50, -50, 50)
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -50, -25, 50, 50, 50, 50, -50)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, -50, 50, 50, 50, 50, -50)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -50, 25, 50, -50, 50, -50, -50)
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 25, -25, 25, -25, -50, 50, -50)
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 25, -50, 25, -50, -50, 50, -50)
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -50, 25, 25, -50, 25, -50, -50)
+2:2/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_22gix"]
+tile_size = Vector2i(100, 100)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 255
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_d4ivp")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_d4ivp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_k17sd")
+offset_left = -49.0
+offset_top = -17.0
+offset_right = 1360.0
+offset_bottom = 776.0
+mouse_filter = 2
+color = Color(1, 0.99607843, 1, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0.009122922, 0.010787602, 0, 1)
+position = Vector2(0, -8)
+tile_map_data = PackedByteArray("AAANAAcAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAAAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAgAAAABAAIAAAABAAYAAAABAAAAAAACAAgAAAABAAIAAAACAAYAAAABAAAAAAADAAgAAAABAAIAAAADAAYAAAABAAAAAAAEAAgAAAABAAIAAAAEAAYAAAABAAAAAAAFAAgAAAABAAIAAAAFAAYAAAABAAAAAAAGAAgAAAABAAIAAAAGAAYAAAABAAAAAAAHAAgAAAABAAIAAAAHAAYAAAABAAAAAAAIAAgAAAABAAIAAAAIAAYAAAABAAAAAAAJAAgAAAABAAIAAAAJAAYAAAABAAAAAAAKAAgAAAABAAIAAAAKAAYAAAABAAAAAAALAAgAAAABAAIAAAALAAYAAAABAAAAAAAMAAgAAAABAAIAAAAMAAYAAAABAAAAAAANAAgAAAABAAIAAAANAAYAAAABAAAAAAAOAAcAAAACAAEAAAAOAAgAAAACAAIAAAAOAAYAAAACAAAAAAANAP//AAABAAEAAAANAP7/AAABAAEAAAAMAP//AAABAAEAAAAMAP7/AAABAAEAAAALAP//AAABAAEAAAALAP7/AAABAAEAAAAKAP//AAABAAEAAAAKAP7/AAABAAEAAAAJAP//AAABAAEAAAAJAP7/AAABAAEAAAAIAP//AAABAAEAAAAIAP7/AAABAAEAAAAHAP//AAABAAEAAAAHAP7/AAABAAEAAAAGAP//AAABAAEAAAAGAP7/AAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP//AAABAAEAAAAEAP7/AAABAAEAAAADAP//AAABAAEAAAADAP7/AAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAAAAP//AAABAAEAAAAAAP7/AAABAAEAAAD/////AAABAAEAAAD///7/AAABAAEAAAD+////AAABAAEAAAD+//7/AAABAAEAAAD9////AAAAAAEAAAD9//7/AAAAAAEAAAD9//3/AAAAAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAD//wAAAAABAAIAAAD+/wAAAAABAAIAAAD9/wAAAAAAAAIAAAAAAP3/AAABAAAAAAAAAAAAAAABAAIAAAABAP3/AAABAAAAAAABAAAAAAABAAIAAAACAP3/AAABAAAAAAACAAAAAAABAAIAAAADAP3/AAABAAAAAAADAAAAAAABAAIAAAAEAP3/AAABAAAAAAAEAAAAAAABAAIAAAAFAP3/AAABAAAAAAAFAAAAAAABAAIAAAAGAP3/AAABAAAAAAAGAAAAAAABAAIAAAAHAP3/AAABAAAAAAAHAAAAAAABAAIAAAAIAP3/AAABAAAAAAAIAAAAAAABAAIAAAAJAP3/AAABAAAAAAAJAAAAAAABAAIAAAAKAP3/AAABAAAAAAAKAAAAAAABAAIAAAALAP3/AAABAAAAAAALAAAAAAABAAIAAAAMAP3/AAABAAAAAAAMAAAAAAABAAIAAAANAP3/AAABAAAAAAANAAAAAAABAAIAAAAOAP7/AAACAAEAAAAOAP//AAACAAEAAAAOAP3/AAACAAAAAAAOAAAAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_22gix")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 275.0
+offset_top = 78.0
+offset_right = 1184.0
+offset_bottom = 351.0
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 150
+text = "SWYN 1.0"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 157.0
+offset_top = 302.0
+offset_right = 1183.0
+offset_bottom = 527.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 100
+text = "Press to PLAY"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

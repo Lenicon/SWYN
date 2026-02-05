@@ -1,8 +1,10 @@
 extends State
 
 @export var coyote_timer: Timer
+@export var shoot_state:State
 
 func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
+	owner.play_animation("idle")
 	owner.jumps = owner.max_jumps
 
 #func handle_input(event:InputEvent) -> void:
@@ -14,6 +16,10 @@ func physics_update(delta:float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		finish("AirMovement", {"input":"jump"})
+	
+	if Input.is_action_just_pressed("shoot") and shoot_state.ammo>0 and owner.syn.visible:
+		owner.play_animation("idle")
+		finish("Shoot")
 	
 	if owner.is_on_floor():
 		if abs(owner.x_input) > 0: owner.play_animation("walk")

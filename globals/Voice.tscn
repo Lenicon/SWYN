@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://t51ythjbnb2x"]
+
+[ext_resource type="Script" uid="uid://cnb3k1gm2rek4" path="res://globals/Voice.gd" id="1_s1a4e"]
+[ext_resource type="AudioStream" uid="uid://dwwb00lnxqjkv" path="res://assets/audio/bgm.mp3" id="2_gjr5k"]
+
+[node name="Voice" type="AudioStreamPlayer"]
+script = ExtResource("1_s1a4e")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_gjr5k")
+parameters/looping = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]

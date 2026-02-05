@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=4 uid="uid://btm5bg7wbxvxb"]
+
+[ext_resource type="Script" uid="uid://dk3f2i3lrbks3" path="res://rooms/1_intro.gd" id="1_tp64o"]
+[ext_resource type="Texture2D" uid="uid://dfwe4bprfws7e" path="res://assets/tilesets/grass.png" id="2_h6ybk"]
+[ext_resource type="PackedScene" uid="uid://ccbibkipccr2c" path="res://characters/swyn/Swyn.tscn" id="3_i17cd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i17cd"]
+resource_name = "Grass"
+texture = ExtResource("2_h6ybk")
+texture_region_size = Vector2i(100, 100)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 50, -25, 50, -25, -25, 50, -25)
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/next_alternative_id = 4
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -25, 50, -25, 50, 50, -50, 50)
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -25, 25, -25, 25, 50, -50, 50)
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -50, -25, 50, 50, 50, 50, -50)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, -50, 50, 50, 50, 50, -50)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -50, 25, 50, -50, 50, -50, -50)
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 25, -25, 25, -25, -50, 50, -50)
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, 25, -50, 25, -50, -50, 50, -50)
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(25, -50, 25, 25, -50, 25, -50, -50)
+2:2/0/terrains_peering_bit/top_left_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_o5537"]
+tile_size = Vector2i(100, 100)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 255
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_i17cd")
+
+[node name="1Intro" type="Node2D" node_paths=PackedStringArray("pig")]
+script = ExtResource("1_tp64o")
+pig = NodePath("Swyn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -21.0
+offset_top = -26.0
+offset_right = 1302.0
+offset_bottom = 736.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+modulate = Color(0.009122922, 0.010787602, 0, 1)
+position = Vector2(0, -8)
+tile_map_data = PackedByteArray("AAANAAcAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAgAAAABAAIAAAABAAYAAAABAAAAAAACAAgAAAABAAIAAAACAAYAAAABAAAAAAADAAgAAAABAAIAAAADAAYAAAABAAAAAAAEAAgAAAABAAIAAAAEAAYAAAABAAAAAAAFAAgAAAABAAIAAAAFAAYAAAABAAAAAAAGAAgAAAABAAIAAAAGAAYAAAABAAAAAAAHAAgAAAABAAIAAAAHAAYAAAABAAAAAAAIAAgAAAABAAIAAAAIAAYAAAABAAAAAAAJAAgAAAABAAIAAAAJAAYAAAABAAAAAAAKAAgAAAABAAIAAAAKAAYAAAABAAAAAAALAAgAAAABAAIAAAALAAYAAAABAAAAAAAMAAgAAAABAAIAAAAMAAYAAAABAAAAAAANAAgAAAABAAIAAAANAAYAAAABAAAAAAAOAAcAAAABAAEAAAAOAAgAAAABAAIAAAAOAAYAAAABAAEAAAANAP//AAABAAEAAAANAP7/AAABAAEAAAAMAP//AAABAAEAAAAMAP7/AAABAAEAAAALAP//AAABAAEAAAALAP7/AAABAAEAAAAKAP//AAABAAEAAAAKAP7/AAABAAEAAAAJAP//AAABAAEAAAAJAP7/AAABAAEAAAAIAP//AAABAAEAAAAIAP7/AAABAAEAAAAHAP//AAABAAEAAAAHAP7/AAABAAEAAAAGAP//AAABAAEAAAAGAP7/AAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP//AAABAAEAAAAEAP7/AAABAAEAAAADAP//AAABAAEAAAADAP7/AAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAAAAP//AAABAAEAAAAAAP7/AAABAAEAAAD/////AAABAAEAAAD///7/AAABAAEAAAD+////AAABAAEAAAD+//7/AAABAAEAAAD9////AAAAAAEAAAD9//7/AAAAAAEAAAD9//3/AAAAAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAD//wAAAAABAAIAAAD+/wAAAAABAAEAAAD9/wAAAAAAAAEAAAAAAP3/AAABAAAAAAAAAAAAAAABAAIAAAABAP3/AAABAAAAAAABAAAAAAABAAIAAAACAP3/AAABAAAAAAACAAAAAAABAAIAAAADAP3/AAABAAAAAAADAAAAAAABAAIAAAAEAP3/AAABAAAAAAAEAAAAAAABAAIAAAAFAP3/AAABAAAAAAAFAAAAAAABAAIAAAAGAP3/AAABAAAAAAAGAAAAAAABAAIAAAAHAP3/AAABAAAAAAAHAAAAAAABAAIAAAAIAP3/AAABAAAAAAAIAAAAAAABAAIAAAAJAP3/AAABAAAAAAAJAAAAAAABAAIAAAAKAP3/AAABAAAAAAAKAAAAAAABAAIAAAALAP3/AAABAAAAAAALAAAAAAABAAIAAAAMAP3/AAABAAAAAAAMAAAAAAABAAIAAAANAP3/AAABAAAAAAANAAAAAAABAAIAAAAOAP7/AAACAAEAAAAOAP//AAACAAEAAAAOAP3/AAACAAAAAAAOAAAAAAABAAEAAAAOAAUAAAABAAEAAAAOAAQAAAABAAEAAAAOAAMAAAABAAEAAAAOAAIAAAABAAEAAAAOAAEAAAABAAEAAAAPAAAAAAACAAEAAAAPAAEAAAACAAEAAAANAAEAAAAAAAEAAAAPAAIAAAACAAEAAAANAAIAAAAAAAEAAAAPAAMAAAACAAEAAAANAAMAAAAAAAEAAAAPAAQAAAACAAEAAAANAAQAAAAAAAEAAAAPAAUAAAACAAEAAAANAAUAAAAAAAEAAAAPAAYAAAACAAEAAAAPAAcAAAACAAEAAAAPAAgAAAACAAIAAAD+/wUAAAABAAEAAAD+/wQAAAABAAEAAAD+/wMAAAABAAEAAAD+/wIAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAACAAAAAAD9/wEAAAAAAAEAAAD//wIAAAACAAEAAAD9/wIAAAAAAAEAAAD//wMAAAACAAEAAAD9/wMAAAAAAAEAAAD//wQAAAACAAEAAAD9/wQAAAAAAAEAAAD//wUAAAACAAEAAAD9/wUAAAAAAAEAAAD9/wYAAAAAAAEAAAD9/wcAAAAAAAEAAAD9/wgAAAAAAAEAAAD+/wkAAAACAAIAAAD9/wkAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_o5537")
+
+[node name="Swyn" parent="." instance=ExtResource("3_i17cd")]
+visible = false
+position = Vector2(605, 459)
