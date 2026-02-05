@@ -1,0 +1,14 @@
+extends RoomComponent
+
+func _ready() ->void:
+	pig.disable_movement()
+	pig.visible = false
+	Voice.talk("intro",1)
+
+func _process(_delta)->void:
+	if Voice.seconds_in(11) and !pig.visible:
+		pig.visible = true
+		pig.enable_movement()
+	
+	if Voice.seconds_in(16) and pig.visible:
+		get_tree().change_scene_to_file("res://rooms/Part1/Grassy_1.tscn")

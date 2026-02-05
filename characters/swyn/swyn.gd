@@ -1,22 +1,28 @@
 extends CharacterComponent
 
 @export var body_shape: Node2D
-@onready var truffle_noise:AudioStreamPlayer2D
+@onready var truffle_noise:AudioStreamPlayer2D = $TruffleNoise
 
 func _ready():
 	update_syn()
 
+func disable_movement()->void:
+	can_move = false
+	velocity = Vector2.ZERO
+
+func enable_movement()->void:
+	can_move = true
+
 ## SYN ###############################################
 @onready var syn:Sprite2D = $Polygons/Syn
 @onready var syn_cannon:Sprite2D = $Polygons/SynCannon
-@export var syn_speed:float = 760 
+@export var syn_speed:float = 800 
 
 func update_syn():
 	syn.visible = Data.save["syn"]["active"]
 	syn_cannon.visible = (Data.save["syn"]["weapon"] != Data.WEAPON.NONE and syn.visible)
 	speed = syn_speed if Data.save["syn"]["active"] else initial_speed
 	
-
 
 ## Horizontal Movement #################################################
 var can_move:bool = true
@@ -50,19 +56,9 @@ var jump_buffer_active:bool = false
 var jumps:int = max_jumps
 @onready var oink:AudioStreamPlayer2D = $Oink
 
-@onready var oink_files = [
-	preload("res://assets/audio/pig/oink1.mp3"),
-	preload("res://assets/audio/pig/oink2.mp3"),
-	preload("res://assets/audio/pig/oink3.mp3"),
-	preload("res://assets/audio/pig/oink4.mp3"),
-	preload("res://assets/audio/pig/oink5.mp3"),
-]
-
 func jump() -> void:
 	if jumps > 0 and can_move:
-		var r = randi_range(0, 4)
-		oink.stream = oink_files[r]
-		if oink.stream: oink.play()
+		Data.oink(oink)
 		velocity.y = jump_velocity
 
 func handle_variable_jump_height(jump_released:bool) -> void:

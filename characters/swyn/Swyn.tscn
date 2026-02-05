@@ -1316,7 +1316,7 @@ rest = Transform2D(1, 0, 0, 1, -23, 2.7210884)
 
 [node name="Head" type="Bone2D" parent="Polygons/Skeleton2D/Body"]
 position = Vector2(70, 0.8503401)
-rotation = -0.052359894
+rotation = -0.052359898
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(1, 0, 0, 1, 70, 0.8503401)
 auto_calculate_length_and_angle = false
