@@ -8,6 +8,7 @@ func _ready() ->void:
 func _process(_delta)->void:
 	if Voice.seconds_in(11) and !pig.visible:
 		pig.visible = true
+		Voice.noise(pig.oink, "oink")
 		pig.enable_movement()
 	
 	if Voice.seconds_in(16) and pig.visible:

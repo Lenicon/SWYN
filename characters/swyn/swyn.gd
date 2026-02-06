@@ -58,7 +58,7 @@ var jumps:int = max_jumps
 
 func jump() -> void:
 	if jumps > 0 and can_move:
-		Data.oink(oink)
+		Voice.noise(oink, "oink")
 		velocity.y = jump_velocity
 
 func handle_variable_jump_height(jump_released:bool) -> void:

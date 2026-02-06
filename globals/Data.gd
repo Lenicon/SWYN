@@ -20,21 +20,21 @@ var save:Dictionary = {
 	"jumps":2,
 	"truffles":0,
 	"deaths":0,
+	"part":1,
 	"map":MAP.GRASSY,
 	"syn":{
 		"active":false,
 		"weapon":WEAPON.CANNON
+	},
+	"flags":{
+		"finished_main_menu":false,
+		"part1_amy_steak":false,
+		"part2_boss_enzo_1":false,
 	}
 }
 
-@onready var oink_files = [
-	preload("res://assets/audio/pig/oink1.mp3"),
-	preload("res://assets/audio/pig/oink2.mp3"),
-	preload("res://assets/audio/pig/oink3.mp3"),
-	preload("res://assets/audio/pig/oink4.mp3"),
-	preload("res://assets/audio/pig/oink5.mp3"),
-]
-func oink(oink_node:AudioStreamPlayer2D)->void:
-	var r = randi_range(0, 4)
-	oink_node.stream = oink_files[r]
-	if oink_node.stream: oink_node.play()
+func check_flag(flag:String, part:int = 0)->bool:
+	return Data.save["flags"][(("part"+str(part)+"_") if part!=0 else "")+flag]
+
+func set_flag(flag:String, part:int = 0, trueorfalse:bool = true)->void:
+	Data.save["flags"][(("part"+str(part)+"_") if part!=0 else "")+flag] = trueorfalse

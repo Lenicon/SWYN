@@ -13,6 +13,7 @@ extends State
 var type:int = Data.save["syn"]["weapon"]
 var bullet:BulletComponent
 
+@export var gun:AudioStreamPlayer2D
 var ass:int = 1
 func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	owner.play_animation("idle")
@@ -21,6 +22,7 @@ func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	
 	#kc = knockback_cooldown
 	if (Data.save["syn"]["weapon"] == Data.WEAPON.CANNON):
+		Voice.noise(gun, "gun")
 		bullet = load("res://objects/cannonball/Cannonball.tscn").instantiate()
 		bullet.global_position = spot.global_position
 		bullet.direction = owner.direction

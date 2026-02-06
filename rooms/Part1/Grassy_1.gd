@@ -48,7 +48,7 @@ func _process(_delta):
 		Voice.talk("more_truffles", 1)
 		spawned_truffles_state = 1
 	
-	if Voice.seconds_in(17) and spawned_truffles_state == 1:
+	if Voice.seconds_in(13) and spawned_truffles_state == 1:
 		pig.disable_movement()
 		await get_tree().create_timer(0.01).timeout
 		if truffles[0] != null:
@@ -64,9 +64,15 @@ func _process(_delta):
 		Clock.reset_time()
 		spawned_truffles_state = 2
 	
-	if Clock.elapsed_time >= 40 and spawned_truffles_state == 2:
+	if Clock.elapsed_time >= 60 and spawned_truffles_state == 2:
 		spawned_truffles_state = 3
 		Voice.talk("move_on",1)
 		
 	if Voice.before_this("move_on",1) and Voice.seconds_in(23) and spawned_truffles_state == 3:
 		get_tree().change_scene_to_file("res://rooms/Part2/2_Intro.tscn")
+
+
+func _on_amy_steak_2_body_entered(body):
+	if body.is_in_group("Pig") and !Data.check_flag("amy_steak",1):
+		Voice.talk("amy_steak",1)
+		Data.set_flag("amy_steak",1)

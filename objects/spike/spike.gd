@@ -4,7 +4,8 @@ extends Area2D
 @onready var op:Node2D = owner
 func _on_body_entered(body:Node2D)->void:
 	if body.is_in_group("Pig"):
-		if (Data.save["deaths"] >= 0 and Data.save["deaths"] < 6) or Data.save["deaths"] == 9:
+		if (Data.save["deaths"] >= 0 and Data.save["deaths"] < 6 and Data.save["part"]==1) or Data.save["deaths"] == 9:
+			Voice.noise(owner.pig.oink, "oink")
 			Data.save["deaths"] += 1
 			Voice.talk("death"+str(Data.save["deaths"]),1)
 			if (Voice.is_playing):
