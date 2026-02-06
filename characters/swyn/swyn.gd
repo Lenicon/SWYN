@@ -4,6 +4,7 @@ extends CharacterComponent
 @onready var truffle_noise:AudioStreamPlayer2D = $TruffleNoise
 
 func _ready():
+	health_component.set_health(Data.save["health"])
 	update_syn()
 
 func disable_movement()->void:
@@ -12,6 +13,10 @@ func disable_movement()->void:
 
 func enable_movement()->void:
 	can_move = true
+
+func set_health(amount:int)->void:
+	health_component.set_health(amount)
+	Data.save["health"] = amount
 
 ## SYN ###############################################
 @onready var syn:Sprite2D = $Polygons/Syn
@@ -26,7 +31,6 @@ func update_syn():
 
 ## Horizontal Movement #################################################
 var can_move:bool = true
-var direction:int = 1
 var x_input:float
 @export var acceleration:float = 5.0
 @export var friction:float = 15.0

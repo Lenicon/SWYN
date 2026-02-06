@@ -16,7 +16,7 @@ enum WEAPON {
 }
 
 var save:Dictionary = {
-	"health":100,
+	"health":3,
 	"jumps":2,
 	"truffles":0,
 	"deaths":0,

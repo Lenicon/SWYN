@@ -16,7 +16,9 @@ extends CharacterBody2D
 @export var state_machine:StateMachine  ## REQUIRED
 @export var health_component:HealthComponent
 @export var hurtbox_component:HurtBoxComponent
+@export var hitbox_component:HitBoxComponent
 @export var gravity_component:GravityComponent
+var direction:int = 1
 #@export var hitbox_component:HitBoxComponent
 
 #@export var movement_component:MovementComponent

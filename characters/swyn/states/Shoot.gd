@@ -1,19 +1,19 @@
 extends State
 
-@export var spot:Marker2D
 @export var cooldown:Timer
 @export var ammo: int = 3
 @export var max_ammo:int = 3
 
 @export var knockback:float = 10000
+#@onready var bullet_scene = preload("res://objects/cannonball/Cannonball.tscn")
 #@export var knockback_cooldown:float = 10
 
 #var kc:float = knockback_cooldown
 
 var type:int = Data.save["syn"]["weapon"]
-var bullet:BulletComponent
+#var bullet:BulletComponent
+@export var shooting_component:ShootingComponent
 
-@export var gun:AudioStreamPlayer2D
 var ass:int = 1
 func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	owner.play_animation("idle")
@@ -22,11 +22,11 @@ func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	
 	#kc = knockback_cooldown
 	if (Data.save["syn"]["weapon"] == Data.WEAPON.CANNON):
-		Voice.noise(gun, "gun")
-		bullet = load("res://objects/cannonball/Cannonball.tscn").instantiate()
-		bullet.global_position = spot.global_position
-		bullet.direction = owner.direction
-		owner.owner.add_child(bullet)
+		#var bullet = bullet_scene.instantiate()
+		#bullet.global_position = spot.global_position
+		#bullet.direction = owner.direction
+		#owner.owner.add_child(bullet)
+		shooting_component.shoot()
 		ammo -= 1
 		ass = 1
 		cooldown.start()

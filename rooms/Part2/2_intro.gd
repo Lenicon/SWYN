@@ -1,7 +1,7 @@
 extends RoomComponent
 
 func _ready()->void:
-	if Voice.before_this("truffle_found3",1):
+	if !Voice.before_this("move_on",1):
 		Voice.talk("intro",2)
 	Voice.done_talking.connect(_on_done_talking)
 

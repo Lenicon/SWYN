@@ -29,3 +29,8 @@ func increase(amount:int):
 	current_health += amount
 	health_changed.emit(cr, current_health)
 	health_increased.emit(amount)
+
+func set_health(amount:int):
+	health_changed.emit(current_health, amount)
+	current_health = amount;
+	
