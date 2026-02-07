@@ -10,9 +10,10 @@ func _ready():
 	if (bullet_file_path != null):
 		bullet_scene = load(bullet_file_path)
 
-func shoot()->void:
+func shoot(vector_direction:Vector2=Vector2.ZERO)->void:
 	Voice.noise(sound_node, sound_type)
 	var b = bullet_scene.instantiate()
 	b.global_position = global_position
-	b.direction = owner.direction
+	if vector_direction == Vector2.ZERO: b.direction = owner.direction
+	else: b.vector_direction = vector_direction
 	owner.owner.add_child(b)

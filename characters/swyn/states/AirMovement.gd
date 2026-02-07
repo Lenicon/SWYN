@@ -7,7 +7,7 @@ func enter(_previous_state_path: String, data : Dictionary = {}) -> void:
 	
 	if data.has("input"):
 		if data.input == "jump":
-			owner.jumps = owner.max_jumps
+			owner.jumps = Data.save["jumps"]
 			if owner.jumps > 0: owner.jump()
 
 	#owner.jump_buffer_active = false
@@ -38,7 +38,7 @@ func physics_update(delta:float) -> void:
 	
 	else:
 		in_air = false
-		owner.jumps = owner.max_jumps
+		owner.jumps = Data.save["jumps"]
 		#owner.reset_dash()
 		finish("FloorMovement")
 	

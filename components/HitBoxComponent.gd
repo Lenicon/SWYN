@@ -17,7 +17,7 @@
 class_name HitBoxComponent
 extends Area2D
 
-@export var initial_damage:int
+@export var initial_damage:int = 1
 @export var current_damage:int : set = set_current_damage
 
 func _ready() -> void:

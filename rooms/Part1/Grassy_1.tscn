@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdte1rfwu68j" path="res://objects/truffle/Truffle.tscn" id="6_ocxr7"]
 [ext_resource type="Texture2D" uid="uid://hb758bhbfdf1" path="res://objects/truffle/truffle1.png" id="7_hm2cu"]
 [ext_resource type="Texture2D" uid="uid://bndejal2yxjpd" path="res://objects/truffle/truffle2.png" id="8_pt8wy"]
-[ext_resource type="PackedScene" uid="uid://c5h83n1146k6v" path="res://objects/spike/Spike.tscn" id="9_kmdyt"]
+[ext_resource type="PackedScene" uid="uid://k104bkicbiv1" path="res://objects/spike/Spike.tscn" id="9_kmdyt"]
 [ext_resource type="Texture2D" uid="uid://c2qkjn2rcn3dk" path="res://objects/truffle/truffle3.png" id="9_rvqta"]
 [ext_resource type="Texture2D" uid="uid://c045plqeh3wfn" path="res://assets/images/sign1.png" id="10_vov2h"]
 [ext_resource type="PackedScene" uid="uid://bsitdfmh2yr67" path="res://characters/amy_steak/Amy Steak.tscn" id="12_dqgv0"]
@@ -137,7 +137,6 @@ appearance = ExtResource("9_rvqta")
 position = Vector2(164, 429)
 
 [node name="CameraComponent" type="Camera2D" parent="."]
-position = Vector2(12435, 4521)
 zoom = Vector2(0.67, 0.67)
 limit_enabled = false
 limit_left = -600
@@ -153,119 +152,159 @@ position = Vector2(14177, -4986)
 metadata/_edit_lock_ = true
 
 [node name="Spike" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(10878, 4499)
-metadata/_edit_lock_ = true
-
-[node name="Spike3" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(10976, 4505)
-metadata/_edit_lock_ = true
-
-[node name="Spike16" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(6062, -2175)
-metadata/_edit_lock_ = true
-
-[node name="Spike18" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(2872, -2982)
-metadata/_edit_lock_ = true
-
-[node name="Spike19" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(2984, -2985)
-metadata/_edit_lock_ = true
-
-[node name="Spike20" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(3114, -2969)
-metadata/_edit_lock_ = true
-
-[node name="Spike21" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(8960, -5272)
-metadata/_edit_lock_ = true
-
-[node name="Spike22" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9086, -5269)
-metadata/_edit_lock_ = true
-
-[node name="Spike23" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9200, -5260)
-metadata/_edit_lock_ = true
-
-[node name="Spike24" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9326, -5277)
-metadata/_edit_lock_ = true
-
-[node name="Spike25" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(10594, -5299)
-metadata/_edit_lock_ = true
-
-[node name="Spike26" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(11285, -5281)
-metadata/_edit_lock_ = true
-
-[node name="Spike27" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(11899, -5249)
-metadata/_edit_lock_ = true
-
-[node name="Spike28" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(12013, -5281)
-metadata/_edit_lock_ = true
-
-[node name="Spike17" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(5933, -2175)
+position = Vector2(1857, 4506)
+initial_damage = 100
+current_damage = 100
 metadata/_edit_lock_ = true
 
 [node name="Spike2" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(15415, -1387)
+position = Vector2(1993, 4523)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike3" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(2289, 4419)
+initial_damage = 100
 metadata/_edit_lock_ = true
 
 [node name="Spike4" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(11868, -1267)
-metadata/_edit_lock_ = true
-
-[node name="Spike7" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9883, -1267)
-metadata/_edit_lock_ = true
-
-[node name="Spike8" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9761, -1263)
-metadata/_edit_lock_ = true
-
-[node name="Spike9" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(9417, 1034)
-metadata/_edit_lock_ = true
-
-[node name="Spike10" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(5033, 4036)
-metadata/_edit_lock_ = true
-
-[node name="Spike11" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(4914, 4022)
-metadata/_edit_lock_ = true
-
-[node name="Spike13" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(1856, 4509)
-metadata/_edit_lock_ = true
-
-[node name="Spike29" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(251, 2615)
-metadata/_edit_lock_ = true
-
-[node name="Spike30" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(383, 2610)
-metadata/_edit_lock_ = true
-
-[node name="Spike14" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(2008, 4516)
-metadata/_edit_lock_ = true
-
-[node name="Spike15" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(2288, 4409)
+position = Vector2(4915, 4024)
+initial_damage = 100
 metadata/_edit_lock_ = true
 
 [node name="Spike5" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(11762, -1275)
+position = Vector2(5033, 4035)
+initial_damage = 100
 metadata/_edit_lock_ = true
 
 [node name="Spike6" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
-position = Vector2(11648, -1271)
+position = Vector2(253, 2616)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike7" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(381, 2616)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike8" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(10880, 4506)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike9" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(10976, 4506)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike10" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(12609, 4523)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike11" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9418, 1036)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike12" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9758, -1262)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike13" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9886, -1262)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike14" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(11647, -1270)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike15" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(11759, -1270)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike16" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(11871, -1262)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike17" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(15413, -1376)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike18" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(6066, -2166)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike19" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(5930, -2166)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike20" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(3115, -2964)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike21" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(2979, -2980)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike22" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(2875, -2980)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike23" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(8961, -5268)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike24" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9089, -5268)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike25" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9201, -5268)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike26" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(9329, -5268)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike27" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(10593, -5290)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike28" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(11289, -5274)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike29" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(11896, -5248)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike30" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(12013, -5271)
+initial_damage = 100
+metadata/_edit_lock_ = true
+
+[node name="Spike31" parent="SpikesGroup" instance=ExtResource("9_kmdyt")]
+position = Vector2(12127, -5263)
+initial_damage = 100
 metadata/_edit_lock_ = true
 
 [node name="SignGrass1" type="Sprite2D" parent="."]

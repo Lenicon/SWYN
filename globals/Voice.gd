@@ -13,12 +13,14 @@ func talk(filename:String, part:int = 0):
 	if stream:
 		play()
 
+var bgm_name:String
 func play_bgm(filename:String):
+	bgm_name = filename
 	bgm.stream = load("res://assets/audio/bgms/bgm_"+filename+".mp3")
 	bgm.play()
 
 func seconds_in(seconds:float)->bool:
-	return (is_playing and get_playback_position() >= seconds)
+	return (playing and get_playback_position() >= seconds)
 
 func before_this(voice:String,part:int=0)->bool:
 	return !current_file.is_empty() and current_file[0] == voice and current_file[1] == part

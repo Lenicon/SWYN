@@ -7,6 +7,15 @@ func _ready():
 	health_component.set_health(Data.save["health"])
 	update_syn()
 
+func die()->void:
+	Voice.noise(oink, "oink")
+	disable_movement()
+	Data.save["deaths"] += 1
+	var b = load("res://objects/spike/Blip.tscn").instantiate()
+	add_child(b)
+	await get_tree().create_timer(1).timeout
+	get_tree().call_deferred("reload_current_scene")
+
 func disable_movement()->void:
 	can_move = false
 	velocity = Vector2.ZERO
@@ -54,10 +63,10 @@ func handle_horizontal_movement(delta:float) -> void:
 @onready var jump_velocity : float = -((2.0 * jump_height) / time_to_peak)
 
 #@export var jump_velocity: float = 400
-var max_jumps:int = Data.save["jumps"]
+#var max_jumps:int = 
 @export var min_jumps:int = 1
 var jump_buffer_active:bool = false
-var jumps:int = max_jumps
+var jumps:int = Data.save["jumps"]
 @onready var oink:AudioStreamPlayer2D = $Oink
 
 func jump() -> void:

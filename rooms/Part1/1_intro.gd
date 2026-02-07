@@ -1,6 +1,6 @@
 extends RoomComponent
 
-func _ready() ->void:
+func _enter() ->void:
 	pig.disable_movement()
 	pig.visible = false
 	Voice.talk("intro",1)

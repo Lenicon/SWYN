@@ -5,7 +5,7 @@ extends State
 
 func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	owner.play_animation("idle")
-	owner.jumps = owner.max_jumps
+	owner.jumps = Data.save["jumps"]
 
 #func handle_input(event:InputEvent) -> void:
 	#pass

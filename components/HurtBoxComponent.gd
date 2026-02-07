@@ -32,6 +32,6 @@ func _on_area_entered(hitbox:Area2D) -> void:
 func damage(hitbox:Area2D) -> void:
 	if hurtbox_active == true:
 		#print("%s : %s" % [owner.name, health.health])
-		received_damage.emit(hitbox.damage)
-		health.decrease(hitbox.damage)
+		received_damage.emit(hitbox.current_damage)
+		health.decrease(hitbox.current_damage)
 	

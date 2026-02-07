@@ -13,7 +13,10 @@ var possible_truffle_spots:Array[Vector2] = [
 	Vector2(14177, -4986)
 ]
 
-func _ready():
+func _enter()->void:
+	if (Data.save["deaths"] >= 1 and Data.save["deaths"] <= 6 and Data.save["part"]==1) or (Data.save["deaths"] == 10):
+		Voice.talk("death"+str(Data.save["deaths"]),1)
+	
 	Clock.start_time()
 	Voice.done_talking.connect(_on_voice_finished)
 	possible_truffle_spots.shuffle()
@@ -70,7 +73,9 @@ func _process(_delta):
 		
 	if Voice.before_this("move_on",1) and Voice.seconds_in(23) and spawned_truffles_state == 3:
 		get_tree().change_scene_to_file("res://rooms/Part2/2_Intro.tscn")
-
+	
+	if Voice.before_this("death10",1) and Voice.seconds_in(92) and Data.save["jumps"] == 2:
+		Data.save["jumps"] = 3
 
 func _on_amy_steak_2_body_entered(body):
 	if body.is_in_group("Pig") and !Data.check_flag("amy_steak",1):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://phj3l0ykdggx"]
+[gd_scene load_steps=18 format=3 uid="uid://phj3l0ykdggx"]
 
 [ext_resource type="Script" uid="uid://dms5grtffjnpi" path="res://characters/flyballer/flyballer.gd" id="1_26gu0"]
 [ext_resource type="Texture2D" uid="uid://drwpiicclj6j1" path="res://characters/flyballer/flyballer.png" id="2_lgham"]
@@ -8,41 +8,14 @@
 [ext_resource type="Script" uid="uid://q6m2ikyhw1c2" path="res://components/ShootingComponent.gd" id="5_rhs45"]
 [ext_resource type="Script" uid="uid://ctj81lss8e4uo" path="res://components/StateMachine.gd" id="7_xrpm4"]
 [ext_resource type="Script" uid="uid://c763py4pkavfk" path="res://characters/flyballer/idle.gd" id="8_w6t2m"]
+[ext_resource type="Script" uid="uid://cw6osbxa22ln5" path="res://characters/flyballer/aggro.gd" id="9_qsgpj"]
+[ext_resource type="Script" uid="uid://ctn73kk5pfl3y" path="res://characters/flyballer/shoot.gd" id="10_wov37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhs45"]
 size = Vector2(933, 373)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgham"]
 radius = 51.009804
-
-[sub_resource type="Animation" id="Animation_2ueco"]
-resource_name = "fly"
-loop_mode = 2
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 18), Vector2(0, 0), Vector2(0, -18)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite/Flyballer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_rhs45"]
 length = 0.001
@@ -70,13 +43,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite/Flyballer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+
+[sub_resource type="Animation" id="Animation_2ueco"]
+resource_name = "fly"
+loop_mode = 2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 18), Vector2(0, 0), Vector2(0, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -107,10 +97,17 @@ _data = {
 &"gonna_shoot": SubResource("Animation_pwi8b")
 }
 
-[node name="Flyballer" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "hurtbox_component", "hitbox_component")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsgpj"]
+radius = 20.09975
+
+[node name="Flyballer" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "animation_player", "state_machine", "health_component", "hurtbox_component", "hitbox_component")]
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_26gu0")
+sprite = NodePath("sprite")
+speed = 300.0
+animation_player = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
 health_component = NodePath("HealthComponent")
 hurtbox_component = NodePath("sprite/HurtBoxComponent")
 hitbox_component = NodePath("sprite/HitBoxComponent")
@@ -128,7 +125,8 @@ shape = SubResource("RectangleShape2D_rhs45")
 debug_color = Color(0.71617734, 0.4827208, 0, 0.41960785)
 
 [node name="HurtBoxComponent" type="Area2D" parent="sprite" node_paths=PackedStringArray("health")]
-visible = false
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("3_2ueco")
 health = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://b5lhxxqongdx8"
@@ -138,9 +136,11 @@ position = Vector2(-1, -7)
 shape = SubResource("CircleShape2D_lgham")
 
 [node name="HitBoxComponent" type="Area2D" parent="sprite"]
-visible = false
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("4_rhs45")
 initial_damage = 1
+current_damage = 1
 metadata/_custom_type_script = "uid://0eii6e4aaw4f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sprite/HitBoxComponent"]
@@ -158,14 +158,11 @@ bullet_file_path = "res://objects/tennisball/Tennisball.tscn"
 sound_node = NodePath("../../Gun")
 metadata/_custom_type_script = "uid://q6m2ikyhw1c2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, -7)
-shape = SubResource("CircleShape2D_lgham")
-
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("character")]
 script = ExtResource("5_pwi8b")
 initial_health = 2
+current_health = 2
+character = NodePath("..")
 metadata/_custom_type_script = "uid://tuld0msecjtr"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -184,4 +181,22 @@ metadata/_custom_type_script = "uid://ctj81lss8e4uo"
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("8_w6t2m")
 
+[node name="Aggro" type="Node" parent="StateMachine" node_paths=PackedStringArray("shoot_cooldown")]
+script = ExtResource("9_qsgpj")
+min_distance = 700.0
+shoot_cooldown = NodePath("../../ShootCooldown")
+
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("shooting_component")]
+script = ExtResource("10_wov37")
+shooting_component = NodePath("../../sprite/ShootingComponent")
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qsgpj")
+
 [connection signal="body_entered" from="sprite/Detection" to="StateMachine/Idle" method="_on_detection_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Shoot" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="ShootCooldown" to="StateMachine/Aggro" method="_on_shoot_cooldown_timeout"]

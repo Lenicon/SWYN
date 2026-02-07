@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://d07yfi3x8acfr"]
+[gd_scene load_steps=11 format=4 uid="uid://d07yfi3x8acfr"]
 
 [ext_resource type="Script" uid="uid://btia22t7eepm0" path="res://rooms/Part2/2_room2.gd" id="1_u4nj4"]
 [ext_resource type="Shader" uid="uid://db5rdkn4ql71p" path="res://assets/shaders/DynamicFogShader.gdshader" id="2_jwd8j"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bs76o7p8o7vda" path="res://components/CameraComponent.gd" id="5_cq825"]
 [ext_resource type="PackedScene" uid="uid://50md5v5wn777" path="res://objects/door/Door.tscn" id="6_xugru"]
 [ext_resource type="PackedScene" uid="uid://c82w616pk34b3" path="res://components/UIComponent.tscn" id="7_t7lpf"]
+[ext_resource type="PackedScene" uid="uid://phj3l0ykdggx" path="res://characters/flyballer/Flyballer.tscn" id="8_jwd8j"]
+[ext_resource type="PackedScene" uid="uid://k104bkicbiv1" path="res://objects/spike/Spike.tscn" id="9_uolj4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k2gw7"]
 shader = ExtResource("2_jwd8j")
@@ -23,8 +25,10 @@ shader_parameter/p_color = Color(0.73934865, 0, 0.15036243, 1)
 shader_parameter/q_color = Color(1, 0.44285855, 0.43280897, 1)
 shader_parameter/f_color = Color(0.48070258, 0, 0.0064435285, 1)
 
-[node name="2_Room2" type="Node2D" node_paths=PackedStringArray("pig", "ui")]
+[node name="2_Room2" type="Node2D" node_paths=PackedStringArray("enemies", "door", "pig", "ui")]
 script = ExtResource("1_u4nj4")
+enemies = NodePath("Enemies")
+door = NodePath("Door")
 pig = NodePath("Swyn")
 ui = NodePath("UIComponent")
 
@@ -56,8 +60,71 @@ camera_offset = Vector2(0, -100)
 metadata/_custom_type_script = "uid://bs76o7p8o7vda"
 
 [node name="Door" parent="." instance=ExtResource("6_xugru")]
+visible = false
 position = Vector2(5696, 3810)
-room = "2_Room3"
+room = "2_BossRoom"
 
 [node name="UIComponent" parent="." node_paths=PackedStringArray("pig") instance=ExtResource("7_t7lpf")]
 pig = NodePath("../Swyn")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Flyballer" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(2259, 294)
+
+[node name="Flyballer2" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(4237, 495)
+
+[node name="Flyballer3" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(2676, 1740)
+
+[node name="Flyballer8" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(4565, 1304)
+
+[node name="Flyballer9" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(4401, 1746)
+
+[node name="Flyballer4" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(978, 3184)
+
+[node name="Flyballer5" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(1143, 1575)
+
+[node name="Flyballer6" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(4976, 3490)
+
+[node name="Flyballer7" parent="Enemies" instance=ExtResource("8_jwd8j")]
+position = Vector2(2682, 3320)
+
+[node name="HealthSpike" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3117, 602)
+
+[node name="HealthSpike2" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3221, 602)
+
+[node name="HealthSpike3" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3705, 2015)
+
+[node name="HealthSpike4" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3609, 2015)
+
+[node name="HealthSpike5" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3513, 2015)
+
+[node name="HealthSpike6" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(1862, 2020)
+
+[node name="HealthSpike7" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(611, 3832)
+
+[node name="HealthSpike8" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(721, 3827)
+
+[node name="HealthSpike9" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3580, 3820)
+
+[node name="HealthSpike10" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3708, 3840)
+
+[node name="HealthSpike11" parent="." instance=ExtResource("9_uolj4")]
+position = Vector2(3462, 3853)
