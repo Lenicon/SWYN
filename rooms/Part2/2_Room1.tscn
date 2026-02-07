@@ -58,8 +58,20 @@ metadata/_custom_type_script = "uid://bs76o7p8o7vda"
 
 [node name="Door" parent="." instance=ExtResource("6_ukk1l")]
 visible = false
-position = Vector2(2462, 601)
+position = Vector2(2558, 601)
 room = "2_Room2"
+
+[node name="doorsign" type="Label" parent="."]
+visible = false
+z_index = -1
+offset_left = 484.0
+offset_top = 64.0
+offset_right = 2082.0
+offset_bottom = 341.0
+theme_override_font_sizes/font_size = 100
+text = "just skip me if im talking too much
+
+the door's here >>>>>>>>>>>>>>>>>>>>>"
 
 [node name="UIComponent" parent="." node_paths=PackedStringArray("pig") instance=ExtResource("7_otcar")]
 visible = false

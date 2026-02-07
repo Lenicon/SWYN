@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	if !Data.check_flag("finished_main_menu"): Voice.talk("main_menu")
+	if !Data.check_flag("finished_main_menu") and !Voice.before_this("demo_end"): Voice.talk("main_menu")
 	Voice.done_talking.connect(_on_done_talking)
 
 func _on_button_pressed():
@@ -14,3 +14,7 @@ func _on_oink_pressed():
 func _on_done_talking(voice:String, _part:int)->void:
 	if voice == "main_menu":
 		Data.set_flag("finished_main_menu")
+
+
+func _on_moo_pressed():
+	Voice.noise(oink, "moo")

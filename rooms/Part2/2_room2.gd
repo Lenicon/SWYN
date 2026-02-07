@@ -4,6 +4,7 @@ extends RoomComponent
 @export var door:Area2D
 
 func _enter():
+	door.visible = false
 	Data.save["syn"]["active"] = true
 	Data.save["health"] = 5
 	pig.health_component.set_health(Data.save["health"])

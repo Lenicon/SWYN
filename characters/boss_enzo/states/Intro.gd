@@ -16,4 +16,5 @@ func _speak()->void:
 	owner.face.frame = 1
 	owner.v1.play()
 	await get_tree().create_timer(2).timeout
+	owner.health_component.invulnerable = false
 	finish("Idle")

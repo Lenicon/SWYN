@@ -14,5 +14,4 @@ func _physics_process(delta:float) -> void:
 	move_and_slide()
 
 func die():
-	print(global_position, get_parent().pig.global_position)
 	queue_free()

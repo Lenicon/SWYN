@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://do6w7n32srbju"]
+[gd_scene load_steps=10 format=4 uid="uid://do6w7n32srbju"]
 
 [ext_resource type="Script" uid="uid://dd1dufaojsi8b" path="res://rooms/main_menu.gd" id="1_d4ivp"]
 [ext_resource type="Shader" uid="uid://db5rdkn4ql71p" path="res://assets/shaders/DynamicFogShader.gdshader" id="1_quf3u"]
 [ext_resource type="Texture2D" uid="uid://dfwe4bprfws7e" path="res://assets/tilesets/grass.png" id="2_k17sd"]
 [ext_resource type="Texture2D" uid="uid://densnk70uvhip" path="res://assets/images/pigs1.png" id="4_ej13v"]
 [ext_resource type="Texture2D" uid="uid://cg3xscdhor54y" path="res://assets/images/pigs2.png" id="5_ocnmw"]
+[ext_resource type="Texture2D" uid="uid://c61l432muhl2d" path="res://characters/amy_steak/Amy Steak.png" id="6_ocnmw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k17sd"]
 shader = ExtResource("1_quf3u")
@@ -139,30 +140,70 @@ position = Vector2(169, 569)
 rotation = -0.17453292
 texture = ExtResource("4_ej13v")
 
+[node name="oink1" type="Button" parent="Pigs1"]
+offset_left = -134.17902
+offset_top = -77.49255
+offset_right = 142.77115
+offset_bottom = 59.87509
+focus_mode = 0
+flat = true
+
 [node name="Pigs2" type="Sprite2D" parent="."]
 position = Vector2(1037.9999, 538.99994)
 scale = Vector2(1.269565, 1.3125)
 texture = ExtResource("5_ocnmw")
 
-[node name="oink1" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 474.0
-offset_right = 326.0
-offset_bottom = 654.0
-focus_mode = 0
-flat = true
-
-[node name="oink2" type="Button" parent="."]
-offset_left = 970.0
-offset_top = 454.0
-offset_right = 1186.0
-offset_bottom = 652.0
+[node name="oink2" type="Button" parent="Pigs2"]
+offset_left = -53.561523
+offset_top = -64.76187
+offset_right = 94.52063
+offset_bottom = 69.333405
 focus_mode = 0
 flat = true
 
 [node name="oink" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(634, 549)
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 16.0
+offset_right = 178.0
+offset_bottom = 65.0
+text = "turn on volume
+best w headphones"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1083.0
+offset_top = 18.0
+offset_right = 1234.0
+offset_bottom = 67.0
+text = "turn on volume
+best w headphones"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 550.0
+offset_top = 638.0
+offset_right = 701.0
+offset_bottom = 687.0
+text = "turn on volume
+best w headphones"
+horizontal_alignment = 1
+
+[node name="AmySteak" type="Sprite2D" parent="."]
+position = Vector2(1351, 550)
+scale = Vector2(0.625, 0.6019608)
+texture = ExtResource("6_ocnmw")
+
+[node name="moo" type="Button" parent="AmySteak"]
+offset_left = -180.79993
+offset_top = -96.351776
+offset_right = 94.52063
+offset_bottom = 111.30289
+focus_mode = 0
+flat = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="oink1" to="." method="_on_oink_pressed"]
-[connection signal="pressed" from="oink2" to="." method="_on_oink_pressed"]
+[connection signal="pressed" from="Pigs1/oink1" to="." method="_on_oink_pressed"]
+[connection signal="pressed" from="Pigs2/oink2" to="." method="_on_oink_pressed"]
+[connection signal="pressed" from="AmySteak/moo" to="." method="_on_moo_pressed"]

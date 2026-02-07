@@ -96,35 +96,37 @@ position = Vector2(4976, 3490)
 [node name="Flyballer7" parent="Enemies" instance=ExtResource("8_jwd8j")]
 position = Vector2(2682, 3320)
 
-[node name="HealthSpike" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3117, 602)
 
-[node name="HealthSpike2" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike2" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3221, 602)
 
-[node name="HealthSpike3" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike3" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3705, 2015)
 
-[node name="HealthSpike4" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike4" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3609, 2015)
 
-[node name="HealthSpike5" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike5" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3513, 2015)
 
-[node name="HealthSpike6" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike6" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(1862, 2020)
 
-[node name="HealthSpike7" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike7" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(611, 3832)
 
-[node name="HealthSpike8" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike8" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(721, 3827)
 
-[node name="HealthSpike9" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike9" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3580, 3820)
 
-[node name="HealthSpike10" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike10" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3708, 3840)
 
-[node name="HealthSpike11" parent="." instance=ExtResource("9_uolj4")]
+[node name="Spike11" parent="Spikes" instance=ExtResource("9_uolj4")]
 position = Vector2(3462, 3853)

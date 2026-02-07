@@ -11,7 +11,10 @@ func _ready():
 		s.texture = custom_appearance
 
 func _input(event:InputEvent)->void:
-	if event.is_action_pressed("enter") and is_near_door: if room!="": get_tree().change_scene_to_file("res://rooms/Part"+room.get_slice("_",0)+"/"+room+".tscn")
+	if event.is_action_pressed("enter") and is_near_door:
+		if room!="":
+			if room.begins_with("0/"): get_tree().change_scene_to_file("res://rooms/"+room.replace("0/","")+".tscn")
+			else: get_tree().change_scene_to_file("res://rooms/Part"+room.get_slice("_",0)+"/"+room+".tscn")
 
 var is_near_door:bool = false
 func _on_body_entered(body:Node2D) -> void:

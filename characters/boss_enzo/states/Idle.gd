@@ -2,6 +2,8 @@ extends State
 
 var can_attack:bool = true
 func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
+	owner.phase2_shot()
+	
 	if !can_attack: owner.move_timer.start()
 	owner.play_animation("idle")
 	owner.face.frame = 2
@@ -13,10 +15,12 @@ func physics_update(_delta: float) -> void:
 
 func choose_attack()->void:
 	can_attack = false
-	var r:int = randi_range(0,1)
+	var r:int = randi_range(0,1 if owner.phase == 1 else 3)
 	match r:
-		0: finish("Lunge")
-		1: owner.play_animation("prep_attack_1")
+		0:
+			owner.phase2_shot()
+			finish("Lunge")
+		_: owner.play_animation("prep_attack_1")
 
 func _on_move_timer_timeout()->void:
 	can_attack = true

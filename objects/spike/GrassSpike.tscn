@@ -1,7 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5h83n1146k6v"]
+[gd_scene load_steps=4 format=3 uid="uid://d0t8jlsjvftfi"]
 
 [ext_resource type="Texture2D" uid="uid://bqctlf5giikx6" path="res://objects/spike/spike.png" id="1_ap0q0"]
-[ext_resource type="Script" uid="uid://07522jiilgfa" path="res://objects/spike/spike.gd" id="1_x7loa"]
+
+[sub_resource type="GDScript" id="GDScript_lcowi"]
+script/source = "extends Area2D
+
+@export var respawn_scene:String = \"Part1/Grassy_1\"
+@onready var op:Node2D = owner
+var blipped:bool = false
+func _on_body_entered(body:Node2D)->void:
+	if body.is_in_group(\"Pig\") and !blipped:
+		blipped = false
+		Data.save[\"deaths\"] += 1
+		
+		if (Data.save[\"deaths\"] >= 1 and Data.save[\"deaths\"] <= 6 and Data.save[\"part\"]==1) or (Data.save[\"deaths\"] == 10):
+			Voice.talk(\"death\"+str(Data.save[\"deaths\"]),1)
+		
+		op.pig.disable_movement()
+		op.pig.die()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7loa"]
 size = Vector2(114, 98)
@@ -10,7 +27,7 @@ size = Vector2(114, 98)
 collision_layer = 8
 collision_mask = 2
 monitorable = false
-script = ExtResource("1_x7loa")
+script = SubResource("GDScript_lcowi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.847744e-06, -62.5)

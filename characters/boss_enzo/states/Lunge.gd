@@ -1,8 +1,7 @@
 extends State
 
-@export var speed:float = 700
-var target_position:Vector2
-
+@export var speed:float = 1000
+var target:Vector2
 func _ready():
 	lunges = max_lunges
 
@@ -17,15 +16,16 @@ func enter(previous_state_path: String, _data : Dictionary = {}) -> void:
 	
 	if owner.pig:
 		lunges -= 1
-		target_position = owner.pig.global_position - Vector2(0, 10)
+		target = owner.pig.global_position
+		
 
 var is_lunging:bool = false
 @export var max_lunges:int = 5
 var lunges:int = 5
 func physics_update(_delta: float) -> void:
 	if owner.pig and is_lunging:
-		var dir:Vector2 = (target_position - owner.global_position).normalized()
-		if owner.global_position.distance_to(target_position) > 10:
+		var dir:Vector2 = (target - owner.global_position).normalized()
+		if owner.global_position.distance_to(target) > 30:
 			owner.velocity = dir * speed
 		else:
 			_refresh()

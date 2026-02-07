@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c55q7n4sdmmsv"]
+[gd_scene load_steps=27 format=3 uid="uid://c55q7n4sdmmsv"]
 
 [ext_resource type="Script" uid="uid://b8v6ym0xj4g1w" path="res://characters/boss_enzo/boss_enzo.gd" id="1_6aiqk"]
 [ext_resource type="Texture2D" uid="uid://bscgfb4qp3olr" path="res://characters/boss_enzo/boss_enzo.png" id="2_f4ysp"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://c22xwhu1w6ol8" path="res://assets/audio/sfx/boss_enzo/enzo_attack1.mp3" id="10_kdecn"]
 [ext_resource type="Script" uid="uid://d2tjifh4qh1uc" path="res://characters/boss_enzo/states/Shoot.gd" id="11_00sx4"]
 [ext_resource type="AudioStream" uid="uid://cuf87xv1g3fgv" path="res://assets/audio/sfx/boss_enzo/enzo_attack2.mp3" id="11_4wy4m"]
+[ext_resource type="Script" uid="uid://pi826phu3wdn" path="res://characters/boss_enzo/states/Dead.gd" id="13_7qlkt"]
 [ext_resource type="AudioStream" uid="uid://j3j4nl4b1vin" path="res://assets/audio/sfx/gun/poog1.mp3" id="16_7qlkt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8gxy"]
@@ -130,6 +131,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.22, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u8gxy"]
 resource_name = "idle"
@@ -227,10 +240,11 @@ _data = {
 &"prep_attack_2": SubResource("Animation_00xjn")
 }
 
-[node name="BossEnzo" type="CharacterBody2D" node_paths=PackedStringArray("face", "move_timer", "v1", "v2", "v3", "shooting_component", "animation_player", "state_machine", "health_component", "hurtbox_component", "hitbox_component")]
+[node name="BossEnzo" type="CharacterBody2D" node_paths=PackedStringArray("s", "face", "move_timer", "v1", "v2", "v3", "shooting_component", "animation_player", "state_machine", "health_component", "hurtbox_component", "hitbox_component")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_6aiqk")
+s = NodePath("sprite")
 face = NodePath("sprite/BossEnzoFaces")
 move_timer = NodePath("MoveTimer")
 v1 = NodePath("EnzoAttack1")
@@ -318,10 +332,12 @@ script = ExtResource("9_kdecn")
 
 [node name="Lunge" type="Node" parent="StateMachine"]
 script = ExtResource("10_4wy4m")
-speed = 1000.0
 
 [node name="Shoot" type="Node" parent="StateMachine"]
 script = ExtResource("11_00sx4")
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("13_7qlkt")
 
 [node name="EnzoAttack1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_kdecn")
@@ -345,4 +361,5 @@ pitch_scale = 0.47
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Idle" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Lunge" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Dead" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="MoveTimer" to="StateMachine/Idle" method="_on_move_timer_timeout"]

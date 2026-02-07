@@ -1,6 +1,9 @@
 extends RoomComponent
 
+@export var door:Area2D
+
 func _enter()->void:
+	door.visible = false
 	Data.save["syn"]["active"] = true
 	Data.save["health"] = 5
 	pig.health_component.set_health(Data.save["health"])
@@ -14,6 +17,11 @@ func _enter()->void:
 	else:
 		Voice.talk("boss_fight",2)
 
+func _process(_delta)->void:
+	if Voice.before_this("beat_enzo",2) and Voice.seconds_in(10) and !door.visible:
+		door.visible = true
+
 func _on_done_talking(voice:String, part:int)->void:
 	if voice == "boss_fight" and part == 2:
 		Voice.play_bgm("boss_enzo")
+	
