@@ -30,6 +30,7 @@ var save:Dictionary = {
 		"finished_main_menu":false,
 		"part1_amy_steak":false,
 		"part2_boss_enzo_1":false,
+		"part2_stage2_intro":false,
 	}
 }
 

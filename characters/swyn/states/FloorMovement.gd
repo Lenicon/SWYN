@@ -10,16 +10,25 @@ func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 #func handle_input(event:InputEvent) -> void:
 	#pass
 
+func handle_input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump") and owner.jumps > 0:
+		owner.play_animation("jump")
+		finish("AirMovement", {"input":"jump"})
+	
+	if event.is_action("shoot") and shoot_state.ammo>0 and owner.syn.visible:
+		owner.play_animation("idle")
+		finish("Shoot")
+
 func physics_update(delta:float) -> void:
 	owner.handle_horizontal_movement(delta)
 	handle_coyote_time()
 
-	if Input.is_action_just_pressed("jump"):
-		finish("AirMovement", {"input":"jump"})
-	
-	if Input.is_action_just_pressed("shoot") and shoot_state.ammo>0 and owner.syn.visible:
-		owner.play_animation("idle")
-		finish("Shoot")
+	#if Input.is_action_just_pressed("jump"):
+		#finish("AirMovement", {"input":"jump"})
+	#
+	#if Input.is_action_pressed("shoot") and shoot_state.ammo>0 and owner.syn.visible:
+		#owner.play_animation("idle")
+		#finish("Shoot")
 	
 	if owner.is_on_floor():
 		if abs(owner.x_input) > 0: owner.play_animation("walk")

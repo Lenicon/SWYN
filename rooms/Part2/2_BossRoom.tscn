@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://cmcvia3yugba6"]
 
-[ext_resource type="Script" uid="uid://u3qvcsddvcwc" path="res://rooms/Part2/2_boss_room.gd" id="1_p77t6"]
+[ext_resource type="Script" uid="uid://u3qvcsddvcwc" path="res://rooms/Part2/2_bossroom.gd" id="1_p77t6"]
 [ext_resource type="Shader" uid="uid://db5rdkn4ql71p" path="res://assets/shaders/DynamicFogShader.gdshader" id="2_n83ws"]
 [ext_resource type="PackedScene" uid="uid://chm5bpjuq2dt2" path="res://assets/tilesets/Tilesets.tscn" id="3_b7k5q"]
 [ext_resource type="PackedScene" uid="uid://ccbibkipccr2c" path="res://characters/swyn/Swyn.tscn" id="4_avhgk"]

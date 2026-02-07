@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://bs76o7p8o7vda"
 [node name="Door" parent="." instance=ExtResource("6_xugru")]
 visible = false
 position = Vector2(5696, 3810)
-room = "2_BossRoom"
+room = "2_Room3"
 
 [node name="UIComponent" parent="." node_paths=PackedStringArray("pig") instance=ExtResource("7_t7lpf")]
 pig = NodePath("../Swyn")

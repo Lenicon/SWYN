@@ -139,7 +139,6 @@ shape = SubResource("CircleShape2D_lgham")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_rhs45")
-initial_damage = 1
 current_damage = 1
 metadata/_custom_type_script = "uid://0eii6e4aaw4f"
 

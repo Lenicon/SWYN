@@ -16,7 +16,7 @@ func handle_input(event:InputEvent)->void:
 	if event.is_action_pressed("jump") and owner.jumps > 0:
 		owner.jump()
 	
-	if event.is_action_pressed("shoot") and shoot_state.ammo>0 and owner.syn.visible:
+	if event.is_action("shoot") and shoot_state.ammo>0 and owner.syn.visible:
 		owner.play_animation("idle")
 		finish("Shoot")
 

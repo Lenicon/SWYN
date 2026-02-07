@@ -1348,6 +1348,8 @@ shoot_state = NodePath("../Shoot")
 [node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("cooldown", "shooting_component")]
 script = ExtResource("14_8c2ja")
 cooldown = NodePath("../../ShootCooldown")
+ammo = 1
+max_ammo = 1
 shooting_component = NodePath("../../Polygons/SynCannon/ShootingComponent")
 
 [node name="GravityComponent" type="Node" parent="."]
@@ -1366,7 +1368,7 @@ metadata/_custom_type_script = "uid://tuld0msecjtr"
 wait_time = 0.3
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
