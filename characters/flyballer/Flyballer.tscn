@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://tuld0msecjtr" path="res://components/HealthComponent.gd" id="5_pwi8b"]
 [ext_resource type="Script" uid="uid://q6m2ikyhw1c2" path="res://components/ShootingComponent.gd" id="5_rhs45"]
 [ext_resource type="Script" uid="uid://ctj81lss8e4uo" path="res://components/StateMachine.gd" id="7_xrpm4"]
-[ext_resource type="Script" uid="uid://c763py4pkavfk" path="res://characters/flyballer/idle.gd" id="8_w6t2m"]
-[ext_resource type="Script" uid="uid://cw6osbxa22ln5" path="res://characters/flyballer/aggro.gd" id="9_qsgpj"]
-[ext_resource type="Script" uid="uid://ctn73kk5pfl3y" path="res://characters/flyballer/shoot.gd" id="10_wov37"]
+[ext_resource type="Script" uid="uid://c763py4pkavfk" path="res://characters/flyballer/states/idle.gd" id="8_w6t2m"]
+[ext_resource type="Script" uid="uid://cw6osbxa22ln5" path="res://characters/flyballer/states/aggro.gd" id="9_qsgpj"]
+[ext_resource type="Script" uid="uid://ctn73kk5pfl3y" path="res://characters/flyballer/states/shoot.gd" id="10_wov37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhs45"]
 size = Vector2(933, 373)
@@ -139,6 +139,7 @@ shape = SubResource("CircleShape2D_lgham")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_rhs45")
+hitter_name = "Flyballer"
 current_damage = 1
 metadata/_custom_type_script = "uid://0eii6e4aaw4f"
 
@@ -153,7 +154,8 @@ texture = ExtResource("2_lgham")
 [node name="ShootingComponent" type="Marker2D" parent="sprite" node_paths=PackedStringArray("sound_node")]
 position = Vector2(-152, 0)
 script = ExtResource("5_rhs45")
-bullet_file_path = "res://objects/tennisball/Tennisball.tscn"
+hitter_name = "Flyballer"
+bullet_file_path = "res://characters/flyballer/tennisball/Tennisball.tscn"
 sound_node = NodePath("../../Gun")
 metadata/_custom_type_script = "uid://q6m2ikyhw1c2"
 

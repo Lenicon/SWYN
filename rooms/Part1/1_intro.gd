@@ -12,4 +12,4 @@ func _process(_delta)->void:
 		pig.enable_movement()
 	
 	if Voice.seconds_in(16) and pig.visible:
-		get_tree().change_scene_to_file("res://rooms/Part1/Grassy_1.tscn")
+		get_tree().change_scene_to_file("res://rooms/Part1/1_Room1.tscn")

@@ -14,6 +14,7 @@ extends CharacterComponent
 var phase:int = 1
 
 func _ready():
+	Data.set_flag("INCREMENT", "boss_enzo_deaths", 2)
 	health_component.invulnerable = true
 	s.scale = Vector2.ONE
 	if pig == null:

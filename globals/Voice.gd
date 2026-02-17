@@ -7,17 +7,28 @@ func _ready():
 	play()
 
 var current_file:Array = []
-func talk(filename:String, part:int = 0):
+func talk(filename:String, part:int = 0)->void:
+	pause_bgm()
 	current_file = [filename,part]
 	stream = load("res://assets/audio/voices"+("/part"+str(part)+"/" if part!=0 else "")+"/voice_"+("part"+str(part)+"_" if part!=0 else "")+filename+".mp3")
 	if stream:
 		play()
 
 var bgm_name:String
-func play_bgm(filename:String):
-	bgm_name = filename
-	bgm.stream = load("res://assets/audio/bgms/bgm_"+filename+".mp3")
-	bgm.play()
+func play_bgm(filename:String)->void:
+	if filename != "":
+		bgm_name = filename
+		bgm.stream = load("res://assets/audio/bgms/bgm_"+filename+".mp3")
+		bgm.play()
+
+func stop_bgm()->void:
+	bgm.stop()
+
+func pause_bgm()->void:
+	bgm.stream_paused = true
+
+func unpause_bgm()->void:
+	bgm.stream_paused = false
 
 func seconds_in(seconds:float)->bool:
 	return (playing and get_playback_position() >= seconds)
@@ -26,6 +37,7 @@ func before_this(voice:String,part:int=0)->bool:
 	return !current_file.is_empty() and current_file[0] == voice and current_file[1] == part
 
 func _on_finished():
+	unpause_bgm()
 	done_talking.emit(current_file[0],current_file[1])
 
 

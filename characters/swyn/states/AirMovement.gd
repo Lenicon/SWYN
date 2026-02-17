@@ -3,11 +3,11 @@ extends State
 @export var shoot_state:State
 
 func enter(_previous_state_path: String, data : Dictionary = {}) -> void:
-	owner.play_animation("jump")
+	#owner.play_animation("jump")
 	
 	if data.has("input"):
 		if data.input == "jump":
-			owner.jumps = Data.save["jumps"]
+			owner.jumps = Data.get_jumps()
 			if owner.jumps > 0: owner.jump()
 
 	#owner.jump_buffer_active = false
@@ -21,7 +21,7 @@ func handle_input(event:InputEvent)->void:
 		finish("Shoot")
 
 
-var in_air:bool = false
+#var in_air:bool = false
 func physics_update(delta:float) -> void:
 	owner.handle_variable_jump_height(Input.is_action_just_released("jump"))
 	owner.handle_horizontal_movement(delta)
@@ -32,13 +32,15 @@ func physics_update(delta:float) -> void:
 	#owner.handle_dash()
 	
 	if not owner.is_on_floor():
-		if not in_air:
-			in_air = true
-		owner.play_animation("jump")
+		#finish("AirMovement")
+		owner.rotate_core(delta)
+		#if not in_air:
+			#in_air = true
+		#owner.play_animation("jump")
 	
 	else:
-		in_air = false
-		owner.jumps = Data.save["jumps"]
+		#in_air = false
+		owner.jumps = Data.get_jumps()
 		#owner.reset_dash()
 		finish("FloorMovement")
 	

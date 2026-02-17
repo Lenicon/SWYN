@@ -5,7 +5,7 @@ var is_playing:bool = false
 
 func start_time()->void:
 	reset_time()
-	is_playing = true
+	play_time()
 
 func reset_time()->void:
 	elapsed_time = 0

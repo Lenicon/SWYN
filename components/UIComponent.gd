@@ -7,7 +7,7 @@ var prev_hp:int
 #var lives:Array
 
 func _ready():
-	prev_hp = Data.save["health"]
+	prev_hp = Data.get_health()
 	pig.health_component.health_changed.connect(_on_health_changed)
 	#pig.health_component.health_decreased.connect(_on_health_decreased)
 	#pig.health_component.health_increased.connect(_on_health_increased)

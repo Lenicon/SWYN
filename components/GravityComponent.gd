@@ -1,16 +1,3 @@
-##################
-## DO NOT MODIFY #
-##################
-
-####### DOCUMENTATION ######
-## gravity                       Gravity applied for object that jump and fall
-## fall_gravity                  Gravity applied for falling object
-## is_falling                    Whether object is falling or not
-##
-## get_gravity(body)             Get gravity applied to body (either gravity or fall_gravity)
-## handle_gravity(body, delta)   Make Gravity happen. Apply in _physics_process
-##
-
 class_name GravityComponent
 extends Node
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx1qiav1kj1mh"]
+
+[ext_resource type="Script" uid="uid://dgkxvai1nd7w8" path="res://characters/sunshine/sunshine.gd" id="1_csv35"]
+[ext_resource type="Texture2D" uid="uid://fqv12s5wa0v4" path="res://characters/sunshine/sunshine.png" id="1_y24dq"]
+[ext_resource type="Script" uid="uid://bb55u35w0f64b" path="res://components/GravityComponent.gd" id="3_guicf"]
+[ext_resource type="AudioStream" uid="uid://517lf30ufy1l" path="res://assets/audio/sfx/misc/sunshine_roll.mp3" id="4_o2odl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y24dq"]
+radius = 132.00378
+
+[node name="Sunshine" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component") groups=["Sunshine"]]
+collision_mask = 3
+script = ExtResource("1_csv35")
+gravity_component = NodePath("GravityComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y24dq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y24dq")
+
+[node name="GravityComponent" type="Node" parent="."]
+script = ExtResource("3_guicf")
+metadata/_custom_type_script = "uid://bb55u35w0f64b"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o2odl")
+volume_db = 20.0
+parameters/looping = true

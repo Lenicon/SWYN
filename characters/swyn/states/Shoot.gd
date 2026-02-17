@@ -10,7 +10,7 @@ extends State
 
 #var kc:float = knockback_cooldown
 
-var type:int = Data.save["syn"]["weapon"]
+var type:int = Data.get_syn_status()
 #var bullet:BulletComponent
 @export var shooting_component:ShootingComponent
 
@@ -21,11 +21,7 @@ func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 	#ass -= 1
 	
 	#kc = knockback_cooldown
-	if (Data.save["syn"]["weapon"] == Data.WEAPON.CANNON):
-		#var bullet = bullet_scene.instantiate()
-		#bullet.global_position = spot.global_position
-		#bullet.direction = owner.direction
-		#owner.owner.add_child(bullet)
+	if (Data.get_syn_status() == Data.SYN_STATUS.CANNON):
 		shooting_component.shoot()
 		ammo -= 1
 		ass = 1
@@ -34,7 +30,7 @@ func enter(_previous_state_path: String, _data : Dictionary = {}) -> void:
 
 func physics_update(_delta: float) -> void:
 	match type:
-		Data.WEAPON.CANNON:
+		Data.SYN_STATUS.CANNON:
 			owner.velocity.y = 0
 			owner.velocity.x += -owner.direction * knockback
 			#kc -= 1

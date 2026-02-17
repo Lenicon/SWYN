@@ -11,15 +11,15 @@
 shader = ExtResource("1_quf3u")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/octave_count = 5
-shader_parameter/amp_start = 0.5
-shader_parameter/amp_coeff = 0.0
-shader_parameter/freq_coeff = 0.0
-shader_parameter/zoom = 5.77999987453076
-shader_parameter/speed = 0.40000000596048
+shader_parameter/amp_start = 0.61999998614176
+shader_parameter/amp_coeff = 0.05999999865888
+shader_parameter/freq_coeff = 9.99999977648
+shader_parameter/zoom = 8.709999809039399
+shader_parameter/speed = 1.0
 shader_parameter/alpha = 1.0
 shader_parameter/base_color = Color(0.21176471, 0.77254903, 1, 1)
-shader_parameter/p_color = Color(0.9529986, 3.3884047e-05, 0.67668617, 1)
-shader_parameter/q_color = Color(0.9999997, 0.70502895, 0.99789685, 1)
+shader_parameter/p_color = Color(0, 1, 0.6784314, 1)
+shader_parameter/q_color = Color(0.7176471, 0.37254903, 0.99607843, 1)
 shader_parameter/f_color = Color(1, 1, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4ivp"]
@@ -103,36 +103,17 @@ mouse_filter = 2
 color = Color(1, 0.99607843, 1, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-modulate = Color(0.009122922, 0.010787602, 0, 1)
 position = Vector2(0, -8)
-tile_map_data = PackedByteArray("AAANAAcAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAAAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAgAAAABAAIAAAABAAYAAAABAAAAAAACAAgAAAABAAIAAAACAAYAAAABAAAAAAADAAgAAAABAAIAAAADAAYAAAABAAAAAAAEAAgAAAABAAIAAAAEAAYAAAABAAAAAAAFAAgAAAABAAIAAAAFAAYAAAABAAAAAAAGAAgAAAABAAIAAAAGAAYAAAABAAAAAAAHAAgAAAABAAIAAAAHAAYAAAABAAAAAAAIAAgAAAABAAIAAAAIAAYAAAABAAAAAAAJAAgAAAABAAIAAAAJAAYAAAABAAAAAAAKAAgAAAABAAIAAAAKAAYAAAABAAAAAAALAAgAAAABAAIAAAALAAYAAAABAAAAAAAMAAgAAAABAAIAAAAMAAYAAAABAAAAAAANAAgAAAABAAIAAAANAAYAAAABAAAAAAAOAAcAAAACAAEAAAAOAAgAAAACAAIAAAAOAAYAAAACAAAAAAANAP//AAABAAEAAAANAP7/AAABAAEAAAAMAP//AAABAAEAAAAMAP7/AAABAAEAAAALAP//AAABAAEAAAALAP7/AAABAAEAAAAKAP//AAABAAEAAAAKAP7/AAABAAEAAAAJAP//AAABAAEAAAAJAP7/AAABAAEAAAAIAP//AAABAAEAAAAIAP7/AAABAAEAAAAHAP//AAABAAEAAAAHAP7/AAABAAEAAAAGAP//AAABAAEAAAAGAP7/AAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP//AAABAAEAAAAEAP7/AAABAAEAAAADAP//AAABAAEAAAADAP7/AAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAAAAP//AAABAAEAAAAAAP7/AAABAAEAAAD/////AAABAAEAAAD///7/AAABAAEAAAD+////AAABAAEAAAD+//7/AAABAAEAAAD9////AAAAAAEAAAD9//7/AAAAAAEAAAD9//3/AAAAAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAD//wAAAAABAAIAAAD+/wAAAAABAAIAAAD9/wAAAAAAAAIAAAAAAP3/AAABAAAAAAAAAAAAAAABAAIAAAABAP3/AAABAAAAAAABAAAAAAABAAIAAAACAP3/AAABAAAAAAACAAAAAAABAAIAAAADAP3/AAABAAAAAAADAAAAAAABAAIAAAAEAP3/AAABAAAAAAAEAAAAAAABAAIAAAAFAP3/AAABAAAAAAAFAAAAAAABAAIAAAAGAP3/AAABAAAAAAAGAAAAAAABAAIAAAAHAP3/AAABAAAAAAAHAAAAAAABAAIAAAAIAP3/AAABAAAAAAAIAAAAAAABAAIAAAAJAP3/AAABAAAAAAAJAAAAAAABAAIAAAAKAP3/AAABAAAAAAAKAAAAAAABAAIAAAALAP3/AAABAAAAAAALAAAAAAABAAIAAAAMAP3/AAABAAAAAAAMAAAAAAABAAIAAAANAP3/AAABAAAAAAANAAAAAAABAAIAAAAOAP7/AAACAAEAAAAOAP//AAACAAEAAAAOAP3/AAACAAAAAAAOAAAAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAANAAcAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAAAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAgAAAABAAIAAAABAAYAAAABAAAAAAACAAgAAAABAAIAAAACAAYAAAABAAAAAAADAAgAAAABAAIAAAADAAYAAAABAAAAAAAEAAgAAAABAAIAAAAEAAYAAAABAAAAAAAFAAgAAAABAAIAAAAFAAYAAAABAAAAAAAGAAgAAAABAAIAAAAGAAYAAAABAAAAAAAHAAgAAAABAAIAAAAHAAYAAAABAAAAAAAIAAgAAAABAAIAAAAIAAYAAAABAAAAAAAJAAgAAAABAAIAAAAJAAYAAAABAAAAAAAKAAgAAAABAAIAAAAKAAYAAAABAAAAAAALAAgAAAABAAIAAAALAAYAAAABAAAAAAAMAAgAAAABAAIAAAAMAAYAAAABAAAAAAANAAgAAAABAAIAAAANAAYAAAABAAAAAAAOAAcAAAACAAEAAAAOAAgAAAACAAIAAAAOAAYAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_22gix")
 
-[node name="author" type="Label" parent="."]
-offset_left = 421.0
-offset_top = 174.0
-offset_right = 804.0
-offset_bottom = 270.0
-theme_override_constants/outline_size = 50
-theme_override_font_sizes/font_size = 70
-text = "by Len.icon"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 306.0
-offset_top = -19.0
-offset_right = 988.0
-offset_bottom = 254.0
-theme_override_constants/outline_size = 50
-theme_override_font_sizes/font_size = 150
-text = "SWYN 1.0"
-
 [node name="Button" type="Button" parent="."]
-offset_left = 303.0
-offset_top = 300.0
-offset_right = 1033.0
-offset_bottom = 445.0
+offset_left = 425.0
+offset_top = 418.0
+offset_right = 857.0
+offset_bottom = 532.0
 theme_override_constants/outline_size = 40
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 50
 text = "Press to PLAY"
 
 [node name="Pigs1" type="Sprite2D" parent="."]
@@ -164,31 +145,47 @@ flat = true
 [node name="oink" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(634, 549)
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 16.0
-offset_right = 178.0
-offset_bottom = 65.0
-text = "turn on volume
-best w headphones"
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 1083.0
-offset_top = 18.0
-offset_right = 1234.0
-offset_bottom = 67.0
-text = "turn on volume
-best w headphones"
-horizontal_alignment = 2
-
 [node name="Label4" type="Label" parent="."]
-offset_left = 550.0
-offset_top = 638.0
-offset_right = 701.0
-offset_bottom = 687.0
+offset_left = 527.0
+offset_top = 624.0
+offset_right = 808.0
+offset_bottom = 698.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 30
 text = "turn on volume
 best w headphones"
 horizontal_alignment = 1
+
+[node name="TITLE" type="Label" parent="."]
+offset_left = -47.0
+offset_top = -58.0
+offset_right = 1317.0
+offset_bottom = 351.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 200
+theme_override_font_sizes/font_size = 300
+text = "SWYN 1.2"
+
+[node name="TITLE2" type="Label" parent="TITLE"]
+layout_mode = 0
+offset_right = 1137.0
+offset_bottom = 342.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 300
+text = "SWYN 1.2"
+metadata/_edit_lock_ = true
+
+[node name="author" type="Label" parent="."]
+offset_left = 505.0
+offset_top = 250.0
+offset_right = 778.0
+offset_bottom = 319.0
+theme_override_constants/outline_size = 50
+theme_override_font_sizes/font_size = 50
+text = "by Len.icon"
 
 [node name="AmySteak" type="Sprite2D" parent="."]
 position = Vector2(1351, 550)

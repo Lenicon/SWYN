@@ -32,10 +32,10 @@ ui = NodePath("UIComponent")
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -100
 material = SubResource("ShaderMaterial_k2gw7")
-offset_left = -162.0
-offset_top = -465.0
-offset_right = 2905.0
-offset_bottom = 907.0
+offset_left = -333.0
+offset_top = -496.0
+offset_right = 2734.0
+offset_bottom = 876.0
 
 [node name="Tilesets" parent="." instance=ExtResource("3_otcar")]
 z_index = -1
@@ -76,3 +76,5 @@ the door's here >>>>>>>>>>>>>>>>>>>>>"
 [node name="UIComponent" parent="." node_paths=PackedStringArray("pig") instance=ExtResource("7_otcar")]
 visible = false
 pig = NodePath("../Swyn")
+
+[connection signal="enter" from="Door" to="." method="_on_door_enter"]

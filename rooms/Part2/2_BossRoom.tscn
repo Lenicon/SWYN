@@ -24,9 +24,10 @@ shader_parameter/p_color = Color(0.73934865, 0, 0.15036243, 1)
 shader_parameter/q_color = Color(1, 0.44285855, 0.43280897, 1)
 shader_parameter/f_color = Color(0.48070258, 0, 0.0064435285, 1)
 
-[node name="2_BossRoom" type="Node2D" node_paths=PackedStringArray("door", "pig", "ui")]
+[node name="2_BossRoom" type="Node2D" node_paths=PackedStringArray("door", "boss_enzo", "pig", "ui")]
 script = ExtResource("1_p77t6")
 door = NodePath("Door")
+boss_enzo = NodePath("Enemies/BossEnzo")
 pig = NodePath("Swyn")
 ui = NodePath("UIComponent")
 

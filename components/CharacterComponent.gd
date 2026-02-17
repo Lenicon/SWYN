@@ -1,18 +1,9 @@
-## This is the CharacterComponent
-## All Characters will have this Component
-
-############ IMPORTANT #############
-##  DO NOT MODIFY                  #
-##  EXTEND THIS CLASS TO USE IT    #
-####################################
-
 class_name CharacterComponent
 extends CharacterBody2D
 
 @export_subgroup("Components")
-#@export var default_color:Color
+
 @export var animation_player:AnimationPlayer = null
-#@export var animation_tree:AnimationTree = null
 @export var state_machine:StateMachine  ## REQUIRED
 @export var health_component:HealthComponent
 @export var hurtbox_component:HurtBoxComponent

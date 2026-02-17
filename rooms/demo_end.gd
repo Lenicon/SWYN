@@ -16,6 +16,6 @@ func _process(_delta)->void:
 	if Voice.before_this("demo_end") and Voice.seconds_in(2.5) and !label.visible:
 		label.visible = true
 	
-	if Voice.before_this("demo_end") and Voice.seconds_in(15) and !door.visible:
+	if Voice.before_this("demo_end") and Voice.seconds_in(12) and !door.visible:
 		door.visible = true
 		dlabel.visible = true

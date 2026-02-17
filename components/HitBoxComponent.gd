@@ -1,22 +1,7 @@
-##################
-## DO NOT MODIFY #
-##################
-
-################### DOCUMENTATION ########################
-## ADD A CollisionShape2D UNDER THIS COMPONENT TO USE THIS.
-## MULTIPLE CollisionShape2D CAN BE ADDED UNDER THIS COMPONENT.
-## 
-## FOR ATTACKS, HITBOX CollisionShape2D MUST BE MANUALLY ANIMATED IN AnimationPlayer2D
-##
-## This is responsible for dealing damage to Objects with HurtBoxComponent and HealthComponent
-##
-## set_damage                    Set Damage this Hitbox causes
-## get_damage                  Get Damge this Hitbox casuses
-##
-
 class_name HitBoxComponent
 extends Area2D
 
+@export var hitter_name:String
 @export var initial_damage:int = 1
 @export var current_damage:int : set = set_current_damage
 

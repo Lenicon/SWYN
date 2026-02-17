@@ -4,17 +4,22 @@ extends CharacterComponent
 @onready var truffle_noise:AudioStreamPlayer2D = $TruffleNoise
 
 func _ready():
-	health_component.set_health(Data.save["health"])
+	health_component.set_health(Data.get_health())
 	update_syn()
 
+
+var death_reason:String=""
 func die()->void:
 	Voice.noise(oink, "oink")
 	disable_movement()
-	Data.save["deaths"] += 1
+	Data.set_death_reason(hurtbox_component.last_hitter)
+	Data.increase_total_deaths()
 	var b = load("res://objects/spike/Blip.tscn").instantiate()
 	add_child(b)
 	await get_tree().create_timer(1).timeout
 	get_tree().call_deferred("reload_current_scene")
+
+
 
 func disable_movement()->void:
 	can_move = false
@@ -25,7 +30,10 @@ func enable_movement()->void:
 
 func set_health(amount:int)->void:
 	health_component.set_health(amount)
-	Data.save["health"] = amount
+	Data.set_health(amount)
+
+func rotate_core(delta:float)->void:
+	body_shape.rotation += 10 * delta * direction
 
 ## SYN ###############################################
 @onready var syn:Sprite2D = $Polygons/Syn
@@ -33,9 +41,10 @@ func set_health(amount:int)->void:
 @export var syn_speed:float = 800 
 
 func update_syn():
-	syn.visible = Data.save["syn"]["active"]
-	syn_cannon.visible = (Data.save["syn"]["weapon"] != Data.WEAPON.NONE and syn.visible)
-	speed = syn_speed if Data.save["syn"]["active"] else initial_speed
+	var syn_status = Data.get_syn_status()
+	syn.visible = syn_status > Data.SYN_STATUS.NONE
+	syn_cannon.visible = syn_status > Data.SYN_STATUS.NOWEAPON
+	speed = syn_speed if syn_status > Data.SYN_STATUS.NONE else initial_speed
 	
 
 ## Horizontal Movement #################################################
@@ -66,7 +75,7 @@ func handle_horizontal_movement(delta:float) -> void:
 #var max_jumps:int = 
 @export var min_jumps:int = 1
 var jump_buffer_active:bool = false
-var jumps:int = Data.save["jumps"]
+var jumps:int = Data.get_jumps()
 @onready var oink:AudioStreamPlayer2D = $Oink
 
 func jump() -> void:

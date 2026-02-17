@@ -1,6 +1,7 @@
 class_name BulletComponent
 extends CharacterBody2D
 
+@export var hitbox_component: HitBoxComponent
 @export var direction:int = 1
 @export var vector_direction = Vector2.RIGHT
 @export var acceleration:float = 5.0

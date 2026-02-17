@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://50md5v5wn777"]
+[gd_scene load_steps=6 format=3 uid="uid://50md5v5wn777"]
 
 [ext_resource type="Texture2D" uid="uid://ifkdhfwdwg0w" path="res://objects/door/blue_door.png" id="1_26jys"]
 [ext_resource type="Script" uid="uid://myswh7dk36w" path="res://objects/door/door.gd" id="1_vn1i6"]
+[ext_resource type="AudioStream" uid="uid://cwf4phk8pcjov" path="res://assets/audio/sfx/misc/door_open.mp3" id="3_0oeuj"]
+[ext_resource type="AudioStream" uid="uid://bpmoxcfopkxmy" path="res://assets/audio/sfx/misc/door_close.mp3" id="4_fck6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn1i6"]
 size = Vector2(44, 284)
 
 [node name="Door" type="Area2D"]
+z_index = 1
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_vn1i6")
@@ -28,6 +31,16 @@ offset_right = 73.0
 offset_bottom = -312.0
 theme_override_constants/outline_size = 20
 text = "Down or S to Enter"
+
+[node name="door_open" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -144)
+stream = ExtResource("3_0oeuj")
+volume_db = 2.0
+
+[node name="door_close" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -144)
+stream = ExtResource("4_fck6x")
+volume_db = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

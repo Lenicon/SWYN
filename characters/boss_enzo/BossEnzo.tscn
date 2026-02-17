@@ -274,6 +274,7 @@ visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_u563s")
+hitter_name = "BossEnzo"
 current_damage = 1
 metadata/_custom_type_script = "uid://0eii6e4aaw4f"
 
@@ -297,6 +298,7 @@ debug_color = Color(0.7569592, 0.45586175, 9.62615e-07, 0.41960785)
 
 [node name="ShootingComponent" type="Marker2D" parent="sprite" node_paths=PackedStringArray("sound_node")]
 script = ExtResource("6_dhteq")
+hitter_name = "BossEnzo"
 bullet_file_path = "res://characters/boss_enzo/turon/Turon.tscn"
 sound_node = NodePath("../../gun")
 metadata/_custom_type_script = "uid://q6m2ikyhw1c2"
@@ -341,15 +343,12 @@ script = ExtResource("13_7qlkt")
 
 [node name="EnzoAttack1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_kdecn")
-volume_db = 10.0
 
 [node name="EnzoAttack2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_4wy4m")
-volume_db = 10.0
 
 [node name="EnzoDefeated" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_anw4r")
-volume_db = 10.0
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
