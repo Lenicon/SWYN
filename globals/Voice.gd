@@ -7,12 +7,12 @@ func _ready():
 	play()
 
 var current_file:Array = []
-func talk(filename:String, part:int = 0)->void:
+func talk(filename:String, part:int = 0, from_position:float = 0.0)->void:
 	pause_bgm()
 	current_file = [filename,part]
 	stream = load("res://assets/audio/voices"+("/part"+str(part)+"/" if part!=0 else "")+"/voice_"+("part"+str(part)+"_" if part!=0 else "")+filename+".mp3")
 	if stream:
-		play()
+		play(from_position)
 
 var bgm_name:String
 func play_bgm(filename:String)->void:

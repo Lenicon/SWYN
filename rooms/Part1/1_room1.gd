@@ -15,6 +15,9 @@ var possible_truffle_spots:Array[Vector2] = [
 ]
 
 func _enter()->void:
+	if !Voice.before_this("intro",1):
+		Voice.talk("intro",1,13.5)
+	
 	Data.set_flag("INCREMENT", "deaths", 1)
 	
 	if (Data.get_flag("deaths",1) >= 1 and Data.get_flag("deaths",1) <= 6) or (Data.get_flag("deaths",1) == 10):
@@ -41,7 +44,7 @@ func increase_truffle()->void:
 	pig.disable_movement()
 	pig.velocity.x = 0
 	pig.truffle_noise.play()
-	if (truffle_count > Data.get_flag("truffles",1)):
+	if truffle_count > Data.get_flag("truffles",1) and truffle_count <= 3:
 		Voice.talk("truffle_found"+str(truffle_count), 1)
 		Data.set_flag("INCREMENT", "truffles", 1)
 	pig.speed += 100
@@ -49,22 +52,23 @@ func increase_truffle()->void:
 	Clock.reset_time()
 
 var spawned_truffles_state:int = 0
+@export var more_truffles_after_seconds:float = 100
 func _process(_delta):
-	if Clock.elapsed_time >= 60 and spawned_truffles_state == 0:
+	if Clock.elapsed_time >= more_truffles_after_seconds and spawned_truffles_state == 0:
 		Voice.talk("more_truffles", 1)
 		spawned_truffles_state = 1
 	
 	if Voice.seconds_in(15) and spawned_truffles_state == 1:
 		pig.disable_movement()
 		await get_tree().create_timer(0.01).timeout
-		if truffles[0] != null:
-			truffles[0].global_position = Vector2(pig.global_position.x - pig.direction*400, pig.global_position.y+15)
-		if truffles[1] != null:
-			truffles[1].global_position = Vector2(pig.global_position.x + pig.direction*400, pig.global_position.y+15)
-		if truffles[2] != null:
-			truffles[2].global_position = Vector2(pig.global_position.x + pig.direction*800, pig.global_position.y+15)
-		if truffles[3] != null:
-			truffles[3].global_position = Vector2(pig.global_position.x - pig.direction*800, pig.global_position.y+15)
+		if truffles[4] != null:
+			truffles[4].global_position = Vector2(pig.global_position.x - pig.direction*400, pig.global_position.y+15)
+		if truffles[5] != null:
+			truffles[5].global_position = Vector2(pig.global_position.x + pig.direction*400, pig.global_position.y+15)
+		if truffles[6] != null:
+			truffles[6].global_position = Vector2(pig.global_position.x + pig.direction*800, pig.global_position.y+15)
+		if truffles[7] != null:
+			truffles[7].global_position = Vector2(pig.global_position.x - pig.direction*800, pig.global_position.y+15)
 		await get_tree().create_timer(0.1).timeout
 		pig.enable_movement()
 		Clock.reset_time()

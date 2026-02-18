@@ -2,7 +2,7 @@ extends RoomComponent
 
 func _enter() ->void:
 	pig.disable_movement()
-	pig.visible = false
+	pig.visible = false 
 	Voice.talk("intro",1)
 
 func _process(_delta)->void:

@@ -17,11 +17,10 @@ func _input(event:InputEvent)->void:
 	if event.is_action_pressed("enter") and is_near_door:
 		if room!="":
 			enter.emit()
-			Data.set_room(room)
 			Clock.stop_time()
-			if room.begins_with("0/"): get_tree().change_scene_to_file("res://rooms/"+room.replace("0/","")+".tscn")
-			else: get_tree().change_scene_to_file("res://rooms/Part"+room.get_slice("_",0)+"/"+room+".tscn")
-
+			Data.set_room(room)
+			get_tree().change_scene_to_file(Data.convert_room_name_to_path(room))
+			
 @onready var a1:AudioStreamPlayer2D = $door_open
 @onready var a2:AudioStreamPlayer2D = $door_close
 var is_near_door:bool = false

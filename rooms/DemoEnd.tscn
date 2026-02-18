@@ -75,6 +75,7 @@ sources/0 = SubResource("TileSetAtlasSource_1yokm")
 
 [node name="DemoEnd" type="Node2D" node_paths=PackedStringArray("pig")]
 script = ExtResource("1_w0wkl")
+room_name = "0/DemoEnd"
 pig = NodePath("Swyn")
 
 [node name="ColorRect" type="ColorRect" parent="."]

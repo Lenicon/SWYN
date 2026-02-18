@@ -26,6 +26,7 @@ shader_parameter/f_color = Color(0.48070258, 0, 0.0064435285, 1)
 [node name="2_Room1" type="Node2D" node_paths=PackedStringArray("door", "pig", "ui")]
 script = ExtResource("1_hvcl2")
 door = NodePath("Door")
+room_name = "2_Room1"
 pig = NodePath("Swyn")
 ui = NodePath("UIComponent")
 

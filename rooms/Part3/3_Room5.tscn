@@ -16,7 +16,7 @@ shader_parameter/octave_count = 2
 shader_parameter/amp_start = 0.38999999128272
 shader_parameter/amp_coeff = 0.5999999865888
 shader_parameter/freq_coeff = 9.99999977648
-shader_parameter/zoom = 1.9199999608094802
+shader_parameter/zoom = 1.91999996080948
 shader_parameter/speed = 0.5000000074506
 shader_parameter/alpha = 1.0
 shader_parameter/base_color = Color(0.50980395, 1, 1, 1)
@@ -45,9 +45,10 @@ size = Vector2(1266, 5784)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0ryt"]
 size = Vector2(800, 1004)
 
-[node name="3Room5" type="Node2D" node_paths=PackedStringArray("camera", "pig")]
+[node name="3_Room5" type="Node2D" node_paths=PackedStringArray("camera", "pig")]
 script = ExtResource("1_4k1bb")
 camera = NodePath("CameraComponent")
+room_name = "3_Room5"
 pig = NodePath("Swyn")
 metadata/_custom_type_script = "uid://begdyp01bo04x"
 

@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bx1qiav1kj1mh" path="res://characters/sunshine/Sunshine.tscn" id="6_ak30a"]
 [ext_resource type="PackedScene" uid="uid://x72kcgosdvnc" path="res://objects/button/Button.tscn" id="7_h3oiv"]
 
-[node name="3Room1" type="Node2D" node_paths=PackedStringArray("doors", "buttons")]
+[node name="3_Room1" type="Node2D" node_paths=PackedStringArray("doors", "buttons")]
 script = ExtResource("1_6htwe")
 doors = [NodePath("Door")]
 buttons = [NodePath("Button")]
+room_name = "3_Room1"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1

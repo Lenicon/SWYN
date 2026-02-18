@@ -26,6 +26,7 @@ texture = ExtResource("2_c12tv")
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_c12tv")
+hitter_name = "BossEnzo"
 metadata/_custom_type_script = "uid://0eii6e4aaw4f"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sprite/HitBoxComponent"]

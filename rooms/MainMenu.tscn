@@ -107,7 +107,7 @@ position = Vector2(0, -8)
 tile_map_data = PackedByteArray("AAANAAcAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAcAAAABAAEAAAD//wcAAAABAAEAAAAAAAgAAAABAAIAAAD//wgAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAAAAAD//wYAAAABAAAAAAAAAAYAAAABAAAAAAABAAgAAAABAAIAAAABAAYAAAABAAAAAAACAAgAAAABAAIAAAACAAYAAAABAAAAAAADAAgAAAABAAIAAAADAAYAAAABAAAAAAAEAAgAAAABAAIAAAAEAAYAAAABAAAAAAAFAAgAAAABAAIAAAAFAAYAAAABAAAAAAAGAAgAAAABAAIAAAAGAAYAAAABAAAAAAAHAAgAAAABAAIAAAAHAAYAAAABAAAAAAAIAAgAAAABAAIAAAAIAAYAAAABAAAAAAAJAAgAAAABAAIAAAAJAAYAAAABAAAAAAAKAAgAAAABAAIAAAAKAAYAAAABAAAAAAALAAgAAAABAAIAAAALAAYAAAABAAAAAAAMAAgAAAABAAIAAAAMAAYAAAABAAAAAAANAAgAAAABAAIAAAANAAYAAAABAAAAAAAOAAcAAAACAAEAAAAOAAgAAAACAAIAAAAOAAYAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_22gix")
 
-[node name="Button" type="Button" parent="."]
+[node name="PLAYBUTTON" type="Button" parent="."]
 offset_left = 425.0
 offset_top = 418.0
 offset_right = 857.0
@@ -144,6 +144,7 @@ flat = true
 
 [node name="oink" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(634, 549)
+volume_db = 20.0
 
 [node name="Label4" type="Label" parent="."]
 offset_left = 527.0
@@ -200,7 +201,7 @@ offset_bottom = 111.30289
 focus_mode = 0
 flat = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PLAYBUTTON" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Pigs1/oink1" to="." method="_on_oink_pressed"]
 [connection signal="pressed" from="Pigs2/oink2" to="." method="_on_oink_pressed"]
 [connection signal="pressed" from="AmySteak/moo" to="." method="_on_moo_pressed"]

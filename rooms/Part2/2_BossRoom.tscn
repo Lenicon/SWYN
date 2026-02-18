@@ -28,6 +28,7 @@ shader_parameter/f_color = Color(0.48070258, 0, 0.0064435285, 1)
 script = ExtResource("1_p77t6")
 door = NodePath("Door")
 boss_enzo = NodePath("Enemies/BossEnzo")
+room_name = "2_BossRoom"
 pig = NodePath("Swyn")
 ui = NodePath("UIComponent")
 

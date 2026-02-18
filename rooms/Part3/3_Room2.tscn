@@ -25,11 +25,12 @@ shader_parameter/p_color = Color(0.65882355, 0.6666667, 1, 1)
 shader_parameter/q_color = Color(0.50980395, 1, 1, 1)
 shader_parameter/f_color = Color(1, 1, 1, 1)
 
-[node name="3Room2" type="Node2D" node_paths=PackedStringArray("sunshine", "doors", "buttons", "pig")]
+[node name="3_Room2" type="Node2D" node_paths=PackedStringArray("sunshine", "doors", "buttons", "pig")]
 script = ExtResource("1_qdkgm")
 sunshine = NodePath("Sunshine")
 doors = [NodePath("Door")]
 buttons = [NodePath("Button")]
+room_name = "3_Room2"
 pig = NodePath("Swyn")
 
 [node name="ColorRect" type="ColorRect" parent="."]

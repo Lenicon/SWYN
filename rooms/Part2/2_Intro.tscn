@@ -72,8 +72,10 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_s1hwm")
 
-[node name="2Intro" type="Node2D" node_paths=PackedStringArray("pig")]
+[node name="2_Intro" type="Node2D" node_paths=PackedStringArray("pig")]
 script = ExtResource("1_rbmx1")
+room_name = "2_Intro"
+save_on_ready = false
 pig = NodePath("Swyn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
