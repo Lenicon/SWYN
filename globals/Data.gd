@@ -37,28 +37,28 @@ var save:Dictionary = {
 
 # HELPER FUNCTIONS
 func get_flag(flag:String, part:int = 0)->Variant:
-	if !Data.save["flags"][part].has(flag): 
+	if !save["flags"][part].has(flag): 
 		printerr('"'+flag+'"' + " does not exist in part "+str(part))
 		return null
-	return Data.save["flags"][part].get(flag)
+	return save["flags"][part].get(flag)
 
 func set_flag(status:Variant, flag:String, part:int = 0)->void:
 	if status is String:
-		if status == "INCREMENT": Data.save["flags"][part].set(flag, get_flag(flag, part)+1)
-		elif status == "DECREMENT": Data.save["flags"][part].set(flag, get_flag(flag, part)-1)
-		else: Data.save["flags"][part].set(flag, status)
-	else: Data.save["flags"][part].set(flag, status)
+		if status == "INCREMENT": save["flags"][part].set(flag, get_flag(flag, part)+1)
+		elif status == "DECREMENT": save["flags"][part].set(flag, get_flag(flag, part)-1)
+		else: save["flags"][part].set(flag, status)
+	else: save["flags"][part].set(flag, status)
 
 func get_health()->int:
-	return Data.save["health"]
+	return save["health"]
 func set_health(amount:int)->void:
-	Data.save.set("health", amount)
+	save.set("health", amount)
 
 func get_room()->String:
-	return Data.save.get("room_path")
+	return save.get("room_path")
 func set_room(room:String)->void:
-	if room.begins_with("res://"): Data.save.set("room_path", room)
-	else: Data.save.set("room_path", convert_room_name_to_path(room))
+	if room.begins_with("res://"): save.set("room_path", room)
+	else: save.set("room_path", convert_room_name_to_path(room))
 
 func convert_room_name_to_path(room_name:String)->String:
 	if room_name.begins_with("0/"):
@@ -66,26 +66,26 @@ func convert_room_name_to_path(room_name:String)->String:
 	return "res://rooms/Part"+room_name.get_slice("_",0)+"/"+room_name+".tscn"
 
 func get_jumps()->int:
-	return Data.save.get("jumps")
+	return save.get("jumps")
 func set_jumps(amount:int)->void:
-	Data.save.set("jumps", amount)
+	save.set("jumps", amount)
 
 func set_total_deaths(amount:int)->void:
-	Data.save.set("total_deaths", amount)
+	save.set("total_deaths", amount)
 func get_total_deaths()->int:
-	return Data.save.get("total_deaths")
+	return save.get("total_deaths")
 func increase_total_deaths()->void:
-	set_total_deaths(Data.save.get("total_deaths")+1)
+	set_total_deaths(save.get("total_deaths")+1)
 
 func set_death_reason(node_name:String)->void:
-	Data.save.set("death_reason", node_name)
+	save.set("death_reason", node_name)
 func get_death_reason()->String:
-	return Data.save.get("death_reason")
+	return save.get("death_reason")
 
 func get_syn_status()->int:
-	return Data.save.get("syn")
+	return save.get("syn")
 func set_syn_status(status:int)->void:
-	Data.save.set("syn", status)
+	save.set("syn", status)
 
 
 
